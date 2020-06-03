@@ -30,13 +30,18 @@ use Maatwebsite\Excel\Concerns\FromView;
 class LaporanDikti implements FromView
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
+    public function  __construct($prodi)
+    {
+        $this->prodi = $prodi;
+    }
     public function view(): View
     {
-        $data = Mahasiswam::where('status', '99')->get();
+
+        $data = Mahasiswam::where('status', '99')->where('prodim_id', $this->prodi)->get();
         return view('administrasi.laporan.index')->with([
-            'data' =>$data,
+            'data' => $data,
         ]);
     }
 }

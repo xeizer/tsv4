@@ -416,6 +416,6 @@ class AdministrasiController extends Controller
         $data = Mahasiswam::where('status', 99)->get();
         //dd($data);
 
-        return Excel::download(new LaporanDikti, 'dikti.xlsx');
+        return Excel::download(new LaporanDikti($prodi_id), 'dikti.xlsx');
     }
 }
