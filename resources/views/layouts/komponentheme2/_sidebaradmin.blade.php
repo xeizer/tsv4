@@ -56,6 +56,7 @@
     </ul>
 </li>
 <li class="header">LAPORAN</li>
+{{--
 <li class="treeview @isset ($active) @if($active==6)active @endif @endisset">
     <a href="#">
         <i class="fa fa-files-o"></i>
@@ -75,6 +76,7 @@
     </ul>
 
 </li>
+--}}
 <li class="treeview @isset ($active) @if($active==7)active @endif @endisset">
     <a href="#">
         <i class="fa fa-files-o"></i>
