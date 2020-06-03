@@ -9,10 +9,14 @@ class StakeholderController extends Controller
 {
     public function index($prodi, $tahunangkatan, $tahunlulus)
     {
-        $data = "where('prodim_id', 8)";
-        $sh1 = Stakeholderm::where('sh1', 1)->whereHas('mahasiswa', function ($q) use ($data) {
-            $q->$data;
-        })->get();
+        for ($i = 1; $i >= 7; $i++) {
+            $sh . $i = Stakeholderm::where('sh1',)->whereHas('mahasiswa', function ($q) use ($prodi) {
+                if ($prodi > 0) {
+                    $q->where('prodim_id', $prodi);
+                }
+            })->get();
+        }
+
         dd($sh1);
 
 
