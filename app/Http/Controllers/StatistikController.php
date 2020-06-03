@@ -2161,6 +2161,7 @@ class StatistikController extends Controller
                 }
             }
         } elseif (Auth::user()->hasRole('admin')) {
+
             $prodi = Auth::user()->admin->prodim_id;
 
             if ($tahunangkatan == 0) {
@@ -2193,31 +2194,31 @@ class StatistikController extends Controller
                             ->join('mahasiswams', 'f12ms.mahasiswam_id', '=', 'mahasiswams.id')
                             ->where('f121', 7)
                             ->where('prodim_id', $prodi)->count(),
-                        'f14-1' => F14m::whereHas('mahasiswa', function ($q) {
+                        'f14-1' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
                         })->where('f14', 1)->count(),
-                        'f14-2' => F14m::whereHas('mahasiswa', function ($q) {
+                        'f14-2' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
                         })->where('f14', 2)->count(),
-                        'f14-3' => F14m::whereHas('mahasiswa', function ($q) {
+                        'f14-3' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
                         })->where('f14', 3)->count(),
-                        'f14-4' => F14m::whereHas('mahasiswa', function ($q) {
+                        'f14-4' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
                         })->where('f14', 4)->count(),
-                        'f14-5' => F14m::whereHas('mahasiswa', function ($q) {
+                        'f14-5' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
                         })->where('f14', 5)->count(),
-                        'f15-1' => F15m::whereHas('mahasiswa', function ($q) {
+                        'f15-1' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
                         })->where('f15', 1)->count(),
-                        'f15-2' => F15m::whereHas('mahasiswa', function ($q) {
+                        'f15-2' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
                         })->where('f15', 2)->count(),
-                        'f15-3' => F15m::whereHas('mahasiswa', function ($q) {
+                        'f15-3' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
                         })->where('f15', 3)->count(),
-                        'f15-4' => F15m::whereHas('mahasiswa', function ($q) {
+                        'f15-4' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
                         })->where('f15', 4)->count(),
                         'kerja' => F8m::select('mahasiswams.id, mahasiswams.prodim_id, f8ms.*')
@@ -2325,33 +2326,33 @@ class StatistikController extends Controller
                             ->join('mahasiswams', 'f12ms.mahasiswam_id', '=', 'mahasiswams.id')
                             ->where('f121', 7)
                             ->where('prodim_id', $prodi)->where('tahun_lulus', $tahunlulus)->count(),
-                        'f14-1' => F14m::whereHas('mahasiswa', function ($q) {
+                        'f14-1' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
-                        })->where('f14', 1)->count(),
-                        'f14-2' => F14m::whereHas('mahasiswa', function ($q) {
+                        })->where('tahun_lulus', $tahunlulus)->where('f14', 1)->count(),
+                        'f14-2' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
-                        })->where('f14', 2)->count(),
-                        'f14-3' => F14m::whereHas('mahasiswa', function ($q) {
+                        })->where('tahun_lulus', $tahunlulus)->where('f14', 2)->count(),
+                        'f14-3' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
-                        })->where('f14', 3)->count(),
-                        'f14-4' => F14m::whereHas('mahasiswa', function ($q) {
+                        })->where('tahun_lulus', $tahunlulus)->where('f14', 3)->count(),
+                        'f14-4' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
-                        })->where('f14', 4)->count(),
-                        'f14-5' => F14m::whereHas('mahasiswa', function ($q) {
+                        })->where('tahun_lulus', $tahunlulus)->where('f14', 4)->count(),
+                        'f14-5' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
-                        })->where('f14', 5)->count(),
-                        'f15-1' => F15m::whereHas('mahasiswa', function ($q) {
+                        })->where('tahun_lulus', $tahunlulus)->where('f14', 5)->count(),
+                        'f15-1' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
-                        })->where('f15', 1)->count(),
-                        'f15-2' => F15m::whereHas('mahasiswa', function ($q) {
+                        })->where('tahun_lulus', $tahunlulus)->where('f15', 1)->count(),
+                        'f15-2' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
-                        })->where('f15', 2)->count(),
-                        'f15-3' => F15m::whereHas('mahasiswa', function ($q) {
+                        })->where('tahun_lulus', $tahunlulus)->where('f15', 2)->count(),
+                        'f15-3' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
-                        })->where('f15', 3)->count(),
-                        'f15-4' => F15m::whereHas('mahasiswa', function ($q) {
+                        })->where('tahun_lulus', $tahunlulus)->where('f15', 3)->count(),
+                        'f15-4' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
                             $q->where('prodim_id', $prodi);
-                        })->where('f15', 4)->count(),
+                        })->where('tahun_lulus', $tahunlulus)->where('f15', 4)->count(),
                         'kerja' => F8m::select('mahasiswams.id, mahasiswams.prodim_id, f8ms.*')
                             ->join('mahasiswams', 'f8ms.mahasiswam_id', '=', 'mahasiswams.id')
                             ->where('f8', 1)
@@ -2458,6 +2459,33 @@ class StatistikController extends Controller
                             ->join('mahasiswams', 'f12ms.mahasiswam_id', '=', 'mahasiswams.id')
                             ->where('f121', 7)
                             ->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan)->count(),
+                        'f14-1' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('tahun_lulus', $tahunlulus)->where('f14', 1)->count(),
+                        'f14-2' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('f14', 2)->count(),
+                        'f14-3' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('f14', 3)->count(),
+                        'f14-4' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('f14', 4)->count(),
+                        'f14-5' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('f14', 5)->count(),
+                        'f15-1' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('f15', 1)->count(),
+                        'f15-2' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('f15', 2)->count(),
+                        'f15-3' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('f15', 3)->count(),
+                        'f15-4' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('f15', 4)->count(),
                         'kerja' => F8m::select('mahasiswams.id, mahasiswams.prodim_id, f8ms.*')
                             ->join('mahasiswams', 'f8ms.mahasiswam_id', '=', 'mahasiswams.id')
                             ->where('f8', 1)
@@ -2594,6 +2622,33 @@ class StatistikController extends Controller
                             ->where('angkatan', $tahunangkatan)
                             ->where('prodim_id', $prodi)
                             ->where('tahun_lulus', $tahunlulus)->count(),
+                        'f14-1' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus)->where('f14', 1)->count(),
+                        'f14-2' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus)->where('f14', 2)->count(),
+                        'f14-3' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus)->where('f14', 3)->count(),
+                        'f14-4' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus)->where('f14', 4)->count(),
+                        'f14-5' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus)->where('f14', 5)->count(),
+                        'f15-1' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus)->where('f15', 1)->count(),
+                        'f15-2' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus)->where('f15', 2)->count(),
+                        'f15-3' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus)->where('f15', 3)->count(),
+                        'f15-4' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus)->where('f15', 4)->count(),
                         'kerja' => F8m::select('mahasiswams.id, mahasiswams.prodim_id, f8ms.*')
                             ->join('mahasiswams', 'f8ms.mahasiswam_id', '=', 'mahasiswams.id')
                             ->where('f8', 1)
@@ -2718,6 +2773,7 @@ class StatistikController extends Controller
     }
     public function rekaptracer2(Request $req)
     {
+
         $prodi = $req->prodi;
         $tahunangkatan = $req->tahunangkatan;
         $tahunlulus = $req->tahunlulus;
@@ -4782,6 +4838,7 @@ class StatistikController extends Controller
                 }
             }
         } elseif (Auth::user()->hasRole('admin')) {
+
             $prodi = Auth::user()->admin->prodim_id;
 
             if ($tahunangkatan == 0) {
@@ -4814,6 +4871,33 @@ class StatistikController extends Controller
                             ->join('mahasiswams', 'f12ms.mahasiswam_id', '=', 'mahasiswams.id')
                             ->where('f121', 7)
                             ->where('prodim_id', $prodi)->count(),
+                        'f14-1' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('f14', 1)->count(),
+                        'f14-2' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('f14', 2)->count(),
+                        'f14-3' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('f14', 3)->count(),
+                        'f14-4' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('f14', 4)->count(),
+                        'f14-5' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('f14', 5)->count(),
+                        'f15-1' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('f15', 1)->count(),
+                        'f15-2' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('f15', 2)->count(),
+                        'f15-3' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('f15', 3)->count(),
+                        'f15-4' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi);
+                        })->where('f15', 4)->count(),
                         'kerja' => F8m::select('mahasiswams.id, mahasiswams.prodim_id, f8ms.*')
                             ->join('mahasiswams', 'f8ms.mahasiswam_id', '=', 'mahasiswams.id')
                             ->where('f8', 1)
@@ -4919,6 +5003,33 @@ class StatistikController extends Controller
                             ->join('mahasiswams', 'f12ms.mahasiswam_id', '=', 'mahasiswams.id')
                             ->where('f121', 7)
                             ->where('prodim_id', $prodi)->where('tahun_lulus', $tahunlulus)->count(),
+                        'f14-1' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('tahun_lulus', $tahunlulus);
+                        })->where('f14', 1)->count(),
+                        'f14-2' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('tahun_lulus', $tahunlulus);
+                        })->where('f14', 2)->count(),
+                        'f14-3' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('tahun_lulus', $tahunlulus);
+                        })->where('f14', 3)->count(),
+                        'f14-4' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('tahun_lulus', $tahunlulus);
+                        })->where('f14', 4)->count(),
+                        'f14-5' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('tahun_lulus', $tahunlulus);
+                        })->where('f14', 5)->count(),
+                        'f15-1' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('tahun_lulus', $tahunlulus);
+                        })->where('f15', 1)->count(),
+                        'f15-2' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('tahun_lulus', $tahunlulus);
+                        })->where('f15', 2)->count(),
+                        'f15-3' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('tahun_lulus', $tahunlulus);
+                        })->where('f15', 3)->count(),
+                        'f15-4' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('tahun_lulus', $tahunlulus);
+                        })->where('f15', 4)->count(),
                         'kerja' => F8m::select('mahasiswams.id, mahasiswams.prodim_id, f8ms.*')
                             ->join('mahasiswams', 'f8ms.mahasiswam_id', '=', 'mahasiswams.id')
                             ->where('f8', 1)
@@ -5025,6 +5136,33 @@ class StatistikController extends Controller
                             ->join('mahasiswams', 'f12ms.mahasiswam_id', '=', 'mahasiswams.id')
                             ->where('f121', 7)
                             ->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan)->count(),
+                        'f14-1' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan);
+                        })->where('f14', 1)->count(),
+                        'f14-2' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan);
+                        })->where('f14', 2)->count(),
+                        'f14-3' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan);
+                        })->where('f14', 3)->count(),
+                        'f14-4' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan);
+                        })->where('f14', 4)->count(),
+                        'f14-5' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan);
+                        })->where('f14', 5)->count(),
+                        'f15-1' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan);
+                        })->where('f15', 1)->count(),
+                        'f15-2' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan);
+                        })->where('f15', 2)->count(),
+                        'f15-3' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan);
+                        })->where('f15', 3)->count(),
+                        'f15-4' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan);
+                        })->where('f15', 4)->count(),
                         'kerja' => F8m::select('mahasiswams.id, mahasiswams.prodim_id, f8ms.*')
                             ->join('mahasiswams', 'f8ms.mahasiswam_id', '=', 'mahasiswams.id')
                             ->where('f8', 1)
@@ -5161,6 +5299,33 @@ class StatistikController extends Controller
                             ->where('angkatan', $tahunangkatan)
                             ->where('prodim_id', $prodi)
                             ->where('tahun_lulus', $tahunlulus)->count(),
+                        'f14-1' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus);
+                        })->where('f14', 1)->count(),
+                        'f14-2' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus);
+                        })->where('f14', 2)->count(),
+                        'f14-3' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus);
+                        })->where('f14', 3)->count(),
+                        'f14-4' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus);
+                        })->where('f14', 4)->count(),
+                        'f14-5' => F14m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus);
+                        })->where('f14', 5)->count(),
+                        'f15-1' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus);
+                        })->where('f15', 1)->count(),
+                        'f15-2' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus);
+                        })->where('f15', 2)->count(),
+                        'f15-3' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus);
+                        })->where('f15', 3)->count(),
+                        'f15-4' => F15m::whereHas('mahasiswa', function ($q) use ($prodi, $tahunlulus, $tahunangkatan) {
+                            $q->where('prodim_id', $prodi)->where('angkatan', $tahunangkatan)->where('tahun_lulus', $tahunlulus);
+                        })->where('f15', 4)->count(),
                         'kerja' => F8m::select('mahasiswams.id, mahasiswams.prodim_id, f8ms.*')
                             ->join('mahasiswams', 'f8ms.mahasiswam_id', '=', 'mahasiswams.id')
                             ->where('f8', 1)
