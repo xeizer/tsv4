@@ -82,6 +82,9 @@ class AdministrasiController extends Controller
                     'data' => $data_alumni
                 ]);
             })
+            ->editColumn('ipk', function ($data_alumni) {
+                return number_format($data_alumni->ipk, 2);
+            })
             ->addColumn('tahun_semester', '{{$tahun_lulus}}{{$semester_lulus}}')
             ->rawColumns(['aksi'])
             ->make(true);
