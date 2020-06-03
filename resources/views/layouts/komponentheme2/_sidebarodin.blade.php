@@ -111,9 +111,11 @@
     </ul>
 
 </li>
+{{--
 <li class="header">Tambahan</li>
 <li class="@isset ($active) @if($active=="option1")active @endif @endisset">
     <a href="{{route('dikti.import')}}">
         <i class="fa fa-dashboard"></i> <span>Import Dari Dikti</span>
     </a>
 </li>
+--}}

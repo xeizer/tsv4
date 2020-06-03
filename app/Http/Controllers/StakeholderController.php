@@ -9,10 +9,11 @@ class StakeholderController extends Controller
 {
     public function index($prodi, $tahunangkatan, $tahunlulus)
     {
-
-        $sh1 = Stakeholderm::where('sh1', 1)->whereHas('mahasiswa', function ($q) {
-        });
-        dd($data);
+        $data = "where('prodim_id', 8)";
+        $sh1 = Stakeholderm::where('sh1', 1)->whereHas('mahasiswa', function ($q) use ($data) {
+            $q->$data;
+        })->get();
+        dd($sh1);
 
 
         return view('administrasi.stakeholder.index', [
