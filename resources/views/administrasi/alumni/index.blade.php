@@ -174,7 +174,7 @@
 
                                 @role('dekan')
                                     <optgroup label="{{Auth::user()->admin->prodi->fakultas->nama_fakultas}}">
-                                        @foreach (App\Prodim::where('fakultas_id',Auth::user()->admin->prodi->fakultas->id)->get() as $prod)
+                                        @foreach (App\Prodim::where('fakultasm_id',Auth::user()->admin->prodi->fakultasm_id)->get() as $prod)
                                         <option value="{{$prod->id}}">{{$prod->id}}-{{$prod->nama_prodi}}</option>
                                         @endforeach
 

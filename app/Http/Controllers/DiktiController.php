@@ -14,13 +14,19 @@ class DiktiController extends Controller
     //
     public function laporandikti($prodi)
     {
-        if (Auth::user()->hasRole('odin|rektor|humas')) {
-            $tahun = Mahasiswam::select('tahun_lulus')->distinct()->get();
+        if (Auth::user()->hasRole('odin|rektor|humas|dekan')) {
+            if ($prodi == 1) {
+                $tahun = Mahasiswam::select('tahun_lulus')->distinct()->get();
+                $angkatan = Mahasiswam::select('angkatan')->distinct()->get();
+            } else {
+                $tahun = Mahasiswam::select('tahun_lulus')->where('prodim_id', $prodi)->distinct()->get();
+                $angkatan = Mahasiswam::select('angkatan')->where('prodim_id', $prodi)->distinct()->get();
+            }
+
             $jumlahlulusantahun = [];
             foreach ($tahun as $t) {
                 $jumlahlulusantahun[] = Mahasiswam::select('tahun_lulus')->where('tahun_lulus', $t->tahun_lulus)->count();
             }
-            $angkatan = Mahasiswam::select('angkatan')->distinct()->get();
         } elseif (Auth::user()->hasRole('admin')) {
 
             $tahun = Mahasiswam::select('tahun_lulus')->where('prodim_id', Auth::user()->admin->prodim_id)->distinct()->get();
@@ -32,7 +38,7 @@ class DiktiController extends Controller
         }
 
 
-        if (Auth::user()->hasRole('odin|rektor|humas')) {
+        if (Auth::user()->hasRole('odin|rektor|humas|dekan')) {
             return view('dikti.index')->with([
                 'angkatan' => $angkatan,
                 'jtl' => $jumlahlulusantahun,
@@ -41,10 +47,12 @@ class DiktiController extends Controller
                 'subactive' => 'laporandikti',
                 'title' => 'Laporan Dikti',
                 'subtitle' => 'Laporan Dikti ',
+                'prodi' => $prodi,
             ]);
         } elseif (Auth::user()->hasRole('admin')) {
-            return view('dikti.admin')->with([
+            return view('dikti.index')->with([
                 'angkatan' => $angkatan,
+                'prodi' => $prodi,
                 'jtl' => $jumlahlulusantahun,
                 'tahun' => $tahun,
                 'active' => '7',

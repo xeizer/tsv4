@@ -123,8 +123,7 @@ class AdministrasiController extends Controller
             $subtitle = 'Semua Alumni';
             $jumlahmahasiswa = Mahasiswam::count();
         } elseif (Auth::user()->hasRole('dekan')) {
-            $subtitle = Auth::user()->admin->prodi->fakultas->nama_fakultas;
-            $jumlahmahasiswa = Mahasiswam::where('prodim_id', Auth::user()->admin->prodi->id);
+            $subtitle = "Hola";
         } elseif (Auth::user()->hasRole('admin')) {
             $subtitle = '';
         }
@@ -137,6 +136,7 @@ class AdministrasiController extends Controller
     }
     public function hal_alumni($prodi_id, $status)
     {
+
         if ((!isset($prodi_id)) || (!Prodim::find($prodi_id)) || (!isset($status)) || ($status < 1) || ($status > 4)) {
             abort(404);
         }
@@ -145,7 +145,7 @@ class AdministrasiController extends Controller
             $ajax = $subtitle;
         } elseif (Auth::user()->hasRole('dekan')) {
             $subtitle = Prodim::where(function ($q) {
-                $q->where('fakultasm_id', Auth::user()->admin->prodi->fakultas_id)->orWhere('fakultasm_id', 1);
+                $q->where('fakultasm_id', Auth::user()->admin->prodi->fakultasm_id);
             })->where('id', $prodi_id)->first();
 
             $ajax = $subtitle;
@@ -163,7 +163,7 @@ class AdministrasiController extends Controller
             'active' => '2',
             'subactive' => '2' . $subtitle->id,
             'title' => 'Alumni',
-            'subtitle' => 'Fakultas ' . Auth::user()->admin->prodi->fakultas->nama_fakultas . ' Prodi ' . $subtitle->nama_prodi,
+            'subtitle' => 'Fakultas ' . Auth::user()->admin->prodi->fakultas->nama_fakultas . ', Prodi ' . $subtitle->nama_prodi,
             'ajax' => $ajax->id,
             'status' => $status,
         ]);

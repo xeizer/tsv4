@@ -22,7 +22,7 @@
             <div class="info-box-content">
                 <span class="info-box-text">Semua Mahasiswa</span>
                 <span class="info-box-number">{{$data['semuamahasiswa']}} <small>orang</small></span>
-                <span class="info-box-more">CPU Traffic</span>
+                <span class="info-box-more">-</span>
             </div>
         <!-- /.info-box-content -->
         </div>
@@ -35,7 +35,7 @@
             <div class="info-box-content">
                 <span class="info-box-text">Selesai Mengisi</span>
                 <span class="info-box-number">{{$data['mahasiswaselesaiisi']}} <small>orang</small></span>
-                <span class="info-box-more">CPU Traffic</span>
+                <span class="info-box-more">-</span>
             </div>
         <!-- /.info-box-content -->
         </div>
@@ -48,7 +48,7 @@
         <div class="info-box-content">
             <span class="info-box-text">Sedang Mengisi</span>
             <span class="info-box-number">{{$data['mahasiswasedangisi']}} <small>orang</small></span>
-            <span class="info-box-more">CPU Traffic</span>
+            <span class="info-box-more">-</span>
         </div>
         <!-- /.info-box-content -->
         </div>
@@ -61,7 +61,7 @@
         <div class="info-box-content">
             <span class="info-box-text">Belum Mengisi</span>
             <span class="info-box-number">{{$data['mahasiswabelumisi']}} <small>orang</small></span>
-            <span class="info-box-more">CPU Traffic</span>
+            <span class="info-box-more">-</span>
         </div>
         <!-- /.info-box-content -->
         </div>
@@ -86,9 +86,15 @@
                                 <td>
                                     <select class="form-control" name="tahunlulus">
                                         <option value="0">semua</option>
-                                        @foreach(App\Mahasiswam::select('tahun_lulus')->distinct()->where('status', 99)->get() as $d)
-                                        <option value="{{$d->tahun_lulus}}">{{$d->tahun_lulus}}</option>
-                                        @endforeach
+                                        @if($prodi==1)
+                                            @foreach(App\Mahasiswam::select('tahun_lulus')->distinct()->where('status', 99)->get() as $d)
+                                            <option value="{{$d->tahun_lulus}}" {{$tahunlulus==$d->tahun_lulus ? "selected" : ""}}>{{$d->tahun_lulus}}</option>
+                                            @endforeach
+                                        @else
+                                            @foreach(App\Mahasiswam::select('tahun_lulus')->where('prodim_id', $prodi)->distinct()->where('status', 99)->get() as $d)
+                                            <option value="{{$d->tahun_lulus}}" {{$tahunlulus==$d->tahun_lulus ? "selected" : ""}}>{{$d->tahun_lulus}}</option>
+                                            @endforeach
+                                        @endif
                                     </select>
                                 </td>
                             </tr>
@@ -99,9 +105,15 @@
                                 <td>
                                     <select class="form-control" name="tahunangkatan">
                                         <option value="0">semua</option>
-                                        @foreach(App\Mahasiswam::select('angkatan')->distinct()->where('status', 99)->get() as $d)
-                                        <option value="{{$d->angkatan}}">{{$d->angkatan}}</option>
-                                        @endforeach
+                                        @if($prodi==1)
+                                            @foreach(App\Mahasiswam::select('angkatan')->distinct()->where('status', 99)->get() as $d)
+                                            <option value="{{$d->angkatan}}" {{$tahunangkatan==$d->angkatan ? "selected" : ""}}>{{$d->angkatan}}</option>
+                                            @endforeach
+                                        @else
+                                            @foreach(App\Mahasiswam::select('angkatan')->where('prodim_id', $prodi)->distinct()->where('status', 99)->get() as $d)
+                                            <option value="{{$d->angkatan}}" {{$tahunangkatan==$d->angkatan ? "selected" : ""}}>{{$d->angkatan}}</option>
+                                            @endforeach
+                                        @endif
                                     </select>
                                 </td>
                             </tr>

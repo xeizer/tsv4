@@ -22,31 +22,17 @@
                 </tr>
             </thead>
             <tbody>
-                @if($prodi==1)
-                @foreach($tahun as $t)
-                <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$t->tahun_lulus}}</td>
-                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->count()}}</td>
-                    <td>Semua</td>
-                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->max('ipk')}}</td>
-                    <td>{{number_format(App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->avg('ipk'),2)}}</td>
-                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->min('ipk')}}</td>
-                </tr>
-                @endforeach
-                @else
                 @foreach($tahun as $t)
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$t->tahun_lulus}}</td>
                     <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->where('prodim_id', $prodi)->count()}}</td>
-                    <td>{{App\Prodim::find($prodi)->nama_prodi}}</td>
-                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->where('prodim_id', $prodi)->max('ipk')}}</td>
-                    <td>{{number_format(App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->where('prodim_id', $prodi)->avg('ipk'),2)}}</td>
-                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->where('prodim_id', $prodi)->min('ipk')}}</td>
+                    <td></td>
+                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->max('ipk')}}</td>
+                    <td>{{number_format(App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->avg('ipk'),2)}}</td>
+                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->min('ipk')}}</td>
                 </tr>
                 @endforeach
-                @endif
             </tbody>
         </table>
     </div>
@@ -80,41 +66,22 @@
                 </tr>
             </thead>
             <tbody>
-                @if($prodi==1)
                 @foreach($angkatan as $a)
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$a->angkatan}}</td>
                     <td>{{App\Mahasiswam::where('angkatan', $a->angkatan)->count()}}</td>
-                    <td>{{App\Mahasiswam::tercepat($a->angkatan, 'tahun', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::tercepat($a->angkatan, 'bulan', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::tercepat($a->angkatan, 'hari', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::terlama($a->angkatan, 'tahun', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::terlama($a->angkatan, 'bulan', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::terlama($a->angkatan, 'hari', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::rerata($a->angkatan, 'durasi_tahun', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::rerata($a->angkatan, 'durasi_bulan', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::rerata($a->angkatan, 'durasi_hari', $prodi)}}</td>
+                    <td>{{App\Mahasiswam::tercepat($a->angkatan, 'tahun')}}</td>
+                    <td>{{App\Mahasiswam::tercepat($a->angkatan, 'bulan')}}</td>
+                    <td>{{App\Mahasiswam::tercepat($a->angkatan, 'hari')}}</td>
+                    <td>{{App\Mahasiswam::terlama($a->angkatan, 'tahun')}}</td>
+                    <td>{{App\Mahasiswam::terlama($a->angkatan, 'bulan')}}</td>
+                    <td>{{App\Mahasiswam::terlama($a->angkatan, 'hari')}}</td>
+                    <td>{{App\Mahasiswam::rerata($a->angkatan, 'durasi_tahun')}}</td>
+                    <td>{{App\Mahasiswam::rerata($a->angkatan, 'durasi_bulan')}}</td>
+                    <td>{{App\Mahasiswam::rerata($a->angkatan, 'durasi_hari')}}</td>
                 </tr>
                 @endforeach
-                @else
-                @foreach($angkatan as $a)
-                <tr><td>{{$loop->iteration}}</td>
-                    <td>{{$a->angkatan}}</td>
-                    <td>{{App\Mahasiswam::where('angkatan', $a->angkatan)->where('prodim_id', $prodi)->count()}}</td>
-                    <td>{{App\Mahasiswam::tercepat($a->angkatan, 'tahun', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::tercepat($a->angkatan, 'bulan', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::tercepat($a->angkatan, 'hari', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::terlama($a->angkatan, 'tahun', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::terlama($a->angkatan, 'bulan', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::terlama($a->angkatan, 'hari', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::rerata($a->angkatan, 'durasi_tahun', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::rerata($a->angkatan, 'durasi_bulan', $prodi)}}</td>
-                    <td>{{App\Mahasiswam::rerata($a->angkatan, 'durasi_hari', $prodi)}}</td>
-
-                </tr>
-                @endforeach
-                @endif
             </tbody>
         </table>
     </div>
@@ -257,12 +224,11 @@
                 </tr>
                 <tr>
                     <td>WT &lt; 6<br></td>
-                    <td>WT &gt; 6 dan &lt;18</td>
+                    <td>WT &lt; 6 dan &gt;18</td>
                     <td>WT &gt; 18<br></td>
                 </tr>
             </thead>
             <tbody>
-                @if($prodi==1)
                 @foreach ($tahun as $t)
                 <tr>
                     <td>{{$t->tahun_lulus}}</td>
@@ -272,31 +238,11 @@
                     ->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->where('f3ms.f301','1')->where([['f3ms.f302','<=','6']])
                     ->count()}}</td>
                     <td>{{App\Mahasiswam::select('mahasiswams.*', 'f3ms.*')->join('f3ms', 'f3ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->where('f3ms.f301','1')->where([['f3ms.f302','>','6'],['f3ms.f302','<=','18']])
+                    ->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->where('f3ms.f301','1')->where([['f3ms.f302','<','6'],['f3ms.f302','>=','18']])
                     ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f3ms.*')->join('f3ms', 'f3ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->where('f3ms.f301','1')->where([['f3ms.f302','>','18']])
-                    ->count()}}</td>
+                    <td></td>
                 </tr>
                 @endforeach
-                @else
-                @foreach ($tahun as $t)
-                <tr>
-                    <td>{{$t->tahun_lulus}}</td>
-                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->count()}}</td>
-                    <td>{{App\Mahasiswam::where('tahun_lulus',$t->tahun_lulus)->where('status','99')->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f3ms.*')->join('f3ms', 'f3ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->where('f3ms.f301','1')->where([['f3ms.f302','<=','6']])
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f3ms.*')->join('f3ms', 'f3ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->where('f3ms.f301','1')->where([['f3ms.f302','>','6'],['f3ms.f302','<=','18']])
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f3ms.*')->join('f3ms', 'f3ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->where('f3ms.f301','1')->where([['f3ms.f302','>','18']])
-                    ->count()}}</td>
-                </tr>
-                @endforeach
-                @endif
             </tbody>
         </table>
     </div>
@@ -431,7 +377,6 @@
                 </tr>
             </thead>
             <tbody>
-                @if($prodi==1)
                 @foreach($tahun as $t)
                 <tr>
                     <td>{{$loop->iteration}}</td>
@@ -503,79 +448,6 @@
                     ->count()}}</td>
                 </tr>
                 @endforeach
-                @else
-                @foreach($tahun as $t)
-                <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$t->tahun_lulus}}</td>
-                    <td>{{App\Mahasiswam::where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->count()}}</td>
-                    <td>{{App\Mahasiswam::where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f21',[0,1,2] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f21',[3] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f21',[4,5] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f22',[0,1,2] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f22',[3] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f22',[4,5] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f23',[0,1,2] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f23',[3] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f23',[4,5] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f24',[0,1,2] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f24',[3] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f24',[4,5] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f25',[0,1,2] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f25',[3] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f25',[4,5] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f26',[0,1,2] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f26',[3] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f26',[4,5] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f27',[0,1,2] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f27',[3] )
-                    ->count()}}</td>
-                    <td>{{App\Mahasiswam::select('mahasiswams.*', 'f2ms.*')->join('f2ms', 'f2ms.mahasiswam_id', '=', 'mahasiswams.id')
-                    ->where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->whereIn('f2ms.f27',[4,5] )
-                    ->count()}}</td>
-                </tr>
-                @endforeach
-                @endif
             </tbody>
         </table>
     </div>

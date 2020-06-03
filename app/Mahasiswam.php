@@ -11,9 +11,13 @@ class Mahasiswam extends Model
         'user_id', 'prodim_id', 'ipk', 'semester_lulus', 'tahun_lulus', 'status', 'durasi_tahun', 'durasi_bulan', 'durasi_hari'
     ];
 
-    public function scopeTercepat($query, $angkatan, $pilih)
+    public function scopeTercepat($query, $angkatan, $pilih, $prodi)
     {
-        $durasi = $query->select('durasi_tahun', 'durasi_bulan', 'durasi_hari')->where('angkatan', $angkatan)->get();
+        if ($prodi == 1)
+            $durasi = $query->select('durasi_tahun', 'durasi_bulan', 'durasi_hari')->where('angkatan', $angkatan)->get();
+        else {
+            $durasi = $query->select('durasi_tahun', 'durasi_bulan', 'durasi_hari')->where('prodim_id', $prodi)->where('angkatan', $angkatan)->get();
+        }
         $terkecil = 9999;
         $tahunterpilih = '-';
         $bulanterpilih = '-';
@@ -39,9 +43,13 @@ class Mahasiswam extends Model
             return  $hariterpilih;
         }
     }
-    public function scopeTerlama($query, $angkatan, $pilih)
+    public function scopeTerlama($query, $angkatan, $pilih, $prodi)
     {
-        $durasi = $query->select('durasi_tahun', 'durasi_bulan', 'durasi_hari')->where('angkatan', $angkatan)->get();
+        if ($prodi == 1)
+            $durasi = $query->select('durasi_tahun', 'durasi_bulan', 'durasi_hari')->where('angkatan', $angkatan)->get();
+        else {
+            $durasi = $query->select('durasi_tahun', 'durasi_bulan', 'durasi_hari')->where('prodim_id', $prodi)->where('angkatan', $angkatan)->get();
+        }
         $terkecil = 0;
         $tahunterpilih = '-';
         $bulanterpilih = '-';
@@ -67,9 +75,14 @@ class Mahasiswam extends Model
             return  $hariterpilih;
         }
     }
-    public function scopeRerata($query, $angkatan, $durasipilihan)
+    public function scopeRerata($query, $angkatan, $durasipilihan, $prodi)
     {
-        $durasi = $query->select($durasipilihan)->where('angkatan', $angkatan)->where($durasipilihan, '>', 0)->avg($durasipilihan);
+        if ($prodi == 1) {
+            $durasi = $query->select($durasipilihan)->where('angkatan', $angkatan)->where($durasipilihan, '>', 0)->avg($durasipilihan);
+        } else {
+            $durasi = $query->select($durasipilihan)->where('angkatan', $angkatan)->where('prodim_id', $prodi)->where($durasipilihan, '>', 0)->avg($durasipilihan);
+        }
+
         $tahun = (int) $durasi;
         return $tahun;
     }

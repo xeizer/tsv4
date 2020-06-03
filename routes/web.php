@@ -47,8 +47,8 @@ Route::prefix('/administrasi')->middleware('role:odin|rektor|dekan|admin|humas')
     Route::get('/laporan/dikti/{prodi_id}', 'AdministrasiController@lapordikti')->name('lapor.dikti')->middleware('role:odin|admin|humas');
 });
 Route::prefix('/dikti')->middleware('role:odin|rektor|dekan|admin|humas')->group(function () {
-    Route::get('/laporan/{prodi_id}', 'DiktiController@laporandikti')->name('laporan.dikti')->middleware('role:odin|admin|humas');
-    Route::get('/import', 'DiktiController@importdikti')->name('dikti.import')->middleware('role:odin|admin|humas');
+    Route::get('/laporan/{prodi_id}', 'DiktiController@laporandikti')->name('laporan.dikti');
+    Route::get('/import', 'DiktiController@importdikti')->name('dikti.import');
 });
 Route::post('/import/alumni', 'AdministrasiController@import_mahasiswa')->name('import.alumni');
 Route::post('/import/dikti', 'DiktiController@import_dikti')->name('import.dikti');
