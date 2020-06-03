@@ -58,7 +58,7 @@
     <ul class="treeview-menu">
         @foreach (App\Prodim::all() as $p)
         <li class="@isset ($subactive) @if($subactive==" 5$p->id")active @endif @endisset">
-            <a href="{{route('statistik.index',['prodi_id'=>$p->id])}}"><i
+            <a href="{{route('stakeholder.index',['prodi_id'=>$p->id, 'tahunangkatan' => 0, 'tahunlulus' =>0])}}"><i
                     class="fa @isset ($subactive) @if($subactive==" 5$p->id")fa-circle @else fa-circle-o @endif
                     @endisset"></i>
                 {{$p->slug_prodi}}
