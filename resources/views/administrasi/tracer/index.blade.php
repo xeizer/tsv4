@@ -86,7 +86,7 @@
                                 <td>
                                     <select class="form-control" name="tahunlulus">
                                         <option value="0">semua</option>
-                                        @foreach($data['daftartahunlulus'] as $d)
+                                        @foreach(App\Mahasiswam::select('tahun_lulus')->distinct()->where('status', 99)->get() as $d)
                                         <option value="{{$d->tahun_lulus}}">{{$d->tahun_lulus}}</option>
                                         @endforeach
                                     </select>
@@ -99,7 +99,7 @@
                                 <td>
                                     <select class="form-control" name="tahunangkatan">
                                         <option value="0">semua</option>
-                                        @foreach($data['daftarangkatan'] as $d)
+                                        @foreach(App\Mahasiswam::select('angkatan')->distinct()->where('status', 99)->get() as $d)
                                         <option value="{{$d->angkatan}}">{{$d->angkatan}}</option>
                                         @endforeach
                                     </select>
@@ -121,8 +121,22 @@
             <div class="box-header">
                 <div class="box-title">Berdasar tahun Lulus dan Angkatan</div>
                 <div class="box-body">
-                    <div class="alert alert-info">Tahun lulus: {{$tahunlulus ==0 ? 'Semua Tahun': $tahunlulus}}</div>
-                    <div class="alert alert-info">Tahun angkatan: {{$tahunangkatan ==0 ? 'Semua Tahun': $tahunangkatan}}</div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-info">Fakultas: {{App\Prodim::with('fakultas')->where('id', $prodi)->first()->fakultas->nama_fakultas}}</div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="alert alert-info">Prodi:  {{ App\Prodim::find($prodi)->nama_prodi}}</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-info">Tahun lulus: {{$tahunlulus ==0 ? 'Semua Tahun': $tahunlulus}}</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-info">Tahun angkatan: {{$tahunangkatan ==0 ? 'Semua Tahun': $tahunangkatan}}</div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
