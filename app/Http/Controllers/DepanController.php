@@ -3,26 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Beritainformasim;
-use App\Lowonganm;
+use App\Beritainformasim as Beritadaninformasi;
 
 class DepanController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
+        $bil = Beritadaninformasi::latest()->paginate(2);
         return view('depan.index')->with([
-            'aktif'=>'beranda',
+            'aktif' => 'beranda',
+            'bil' => $bil,
+            'title' => 'Berita, Informasi dan Lowongan'
         ]);
     }
-    public function informasi(){
-        return view('depan.informasi')->with([
-            'data'=>Beritainformasim::paginate(3),
-            'aktif'=>'informasi',
+    public function bil($kategori)
+    {
+        return view('depan.index')->with([
+            'bil' => Beritadaninformasi::where('kategori', $kategori)->paginate(3),
+            'aktif' => $kategori,
+            'title' => $kategori,
+        ]);
+    }
+    public function detilBil($id)
+    {
+        return view('depan.detil_bil', [
+            'data' => Beritadaninformasi::find($id),
         ]);
     }
     public function informasi_detil($id)
     {
-        $data=Beritainformasim::find($id);
+        $data = Beritainformasim::find($id);
         return view('depan.detil_informasi')->with([
             'data' => $data,
             'aktif' => 'informasi',

@@ -25,10 +25,19 @@ Route::get('/logout', function () {
     session()->flush();
     return redirect('/');
 })->name('logoutsemua');
+Route::prefix('administrasi/beritadaninformasi')->middleware('role:admin|odin|humas')->group(function () {
+    Route::get('/', 'BeritadaninformasiController@index')->name('beritadaninformasi.index');
+    Route::post('simpan', 'BeritadaninformasiController@store')->name('beritadaninformasi.simpan');
+    Route::get('{id}/hapus', 'BeritadaninformasiController@destroy')->name('beritadaninformasi.hapus');
+    Route::get('{id}/edit', 'BeritadaninformasiController@tampil_untuk_edit')->name('adminberita.edit');
+    Route::put('{id}/edit/proses', 'BeritadaninformasiController@proses_edit')->name('adminberita.edit.proses');
+});
+// bil = berita informasi lowongan
 Route::get('/', 'DepanController@index')->name('index');
 Route::get('/home', 'DepanController@index')->name('beranda');
-Route::get('/informasi', 'DepanController@informasi')->name('informasi');
-Route::get('/informasi/{id}', 'DepanController@informasi_detil')->name('informasi.detil');
+Route::get('/bil/{kategori}', 'DepanController@bil')->name('bil');
+Route::get('/bil/detil/{id}', 'DepanController@detilBil')->name('detil.bil');
+Route::get('/informasi/{id}', 'DepanController@informasi_detil')->name('informasi');
 Route::get('/lowongan', 'DepanController@lowongan')->name('lowongan');
 Route::get('/lowongan/{id}', 'DepanController@lowongan_detil')->name('lowongan.detil');
 Route::get('/alumni', 'DepanController@index')->name('alumni');

@@ -10,10 +10,10 @@
                 <a class="nav-link @isset($aktif) @if($aktif=='beranda') bg-success @endif @endisset" href="{{route('beranda')}}">Beranda</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link @isset($aktif) @if($aktif=='informasi') bg-success @endif @endisset" href="{{route('informasi')}}">Informasi</a>
+                <a class="nav-link @isset($aktif) @if($aktif=='Informasi') bg-success @endif @endisset" href="{{route('bil', 'Informasi')}}">Informasi</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link @isset($aktif) @if($aktif=='lowongan') bg-success @endif @endisset" href="{{route('lowongan')}}">Lowongan</a>
+                <a class="nav-link @isset($aktif) @if($aktif=='Lowongan') bg-success @endif @endisset" href="{{route('bil', 'Lowongan')}}">Lowongan</a>
               </li>
 					    <li class="nav-item">
                 <a class="nav-link @isset($aktif) @if($aktif=='alumni') bg-success @endif @endisset" href="{{route('alumni')}}">Alumni</a>

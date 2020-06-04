@@ -17,6 +17,13 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
     </li>
+    @role('odin|admin')
+    <li class="@isset ($active) @if($active=='berita')active @endif @endisset">
+        <a href="{{route('beritadaninformasi.index')}}">
+            <i class="fa fa-newspaper-o"></i> <span>Berita dan Lowongan</span>
+        </a>
+    </li>
+    @endrole
     @role('odin|rektor|humas')
     @include('layouts.komponentheme2._sidebarodin')
     @endrole
