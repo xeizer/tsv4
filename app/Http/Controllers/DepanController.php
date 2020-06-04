@@ -31,6 +31,10 @@ class DepanController extends Controller
             'data' => Beritadaninformasi::find($id),
         ]);
     }
+    public function alumni()
+    {
+        return view('depan.alumni');
+    }
     public function informasi_detil($id)
     {
         $data = Beritainformasim::find($id);

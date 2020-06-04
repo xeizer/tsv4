@@ -40,7 +40,8 @@ Route::get('/bil/detil/{id}', 'DepanController@detilBil')->name('detil.bil');
 Route::get('/informasi/{id}', 'DepanController@informasi_detil')->name('informasi');
 Route::get('/lowongan', 'DepanController@lowongan')->name('lowongan');
 Route::get('/lowongan/{id}', 'DepanController@lowongan_detil')->name('lowongan.detil');
-Route::get('/alumni', 'DepanController@index')->name('alumni');
+Route::get('/alumni', 'DepanController@alumni')->name('alumni');
+Route::get('/alumni/data/detil/{prodi}', 'DepanController@alumni')->name('data_alumni.detil');
 
 Route::prefix('/administrasi')->middleware('role:odin|rektor|dekan|admin|humas')->group(function () {
     Route::get('/', 'AdministrasiController@index')->name('administrasi');
