@@ -22,9 +22,9 @@ class StakeholderController extends Controller
         if ($prodi > 1) {
             $jumlah = Stakeholderm::whereHas('mahasiswa', function ($q) use ($prodi) {
                 $q->where('prodim_id', $prodi);
-            })->count();
+            })->where('status', 1)->count();
         } else {
-            $jumlah = Stakeholderm::count();
+            $jumlah = Stakeholderm::where('status', 1)->count();
         };
 
         return view('administrasi.stakeholder.index', [
