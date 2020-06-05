@@ -49,7 +49,7 @@
             <h3 class="small-title text-center">SURAT PERNYATAAN<br>BUKTI PENGISIAN TRACER STUDY</h3>
         </div>
 <div class="col-md-8 col-sm-8">
-    <p style="margin-left: 40px">Yang bertanda tangan dibawah ini :</p>
+    <p style="margin-left: 40px">Yang bertanda tangan dibawah ini : </p>
 
     <table border="0" style="margin-left: 50px">
         <tr>
@@ -94,9 +94,6 @@
             <td width="200"> {{ $tahunlulus }}{{ $semesterlulus }}</td>
         </tr>
     </table>
-
-
-
 </div>
 <p style="margin: 5%" align="justify">Dengan ini saya menyatakan telah mengisi data tracer study yang akan digunakan
     sebagai salah satu
@@ -107,7 +104,7 @@
     <tr>
         <td width="40%">
             <p><br>Kasubag. Pusat Karir dan Tracer Study</p>
-            <img src="{{ asset('gambarumum/ttd_mega.jpg') }}" class="gambar_ttd" style="width: 200">
+            <img src="{{ asset('gambarumum/ttd_mega.jpeg') }}" class="gambar_ttd" style="width: 200">
             <p><b><u>Tri Mega Ralasari S., M.Pd</u></b>
                 <br><b>NPP. 202 2012 218</b></p>
         </td>
@@ -125,7 +122,7 @@
 </table>
     </div>
 
-    </div><!-- end content-->
+    </div>
 </body>
 
 </html>
