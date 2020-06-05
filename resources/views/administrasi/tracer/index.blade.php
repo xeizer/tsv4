@@ -1,6 +1,6 @@
 @extends('layouts.theme2')
 @section('isi')
-@if((!isset($data))||(!isset($data['mahasiswabelumisi']))||($data['mahasiswabelumisi']==0)||($data['mahasiswaselesaiisi']==0))
+@if((!isset($data))||(!isset($data['mahasiswabelumisi']))||($data['kerja']==0)||($data['mahasiswabelumisi']==0)||($data['mahasiswaselesaiisi']==0))
 <div class="row">
     <div class="col-md-12">
         <div class="alert alert-danger" role="alert">
