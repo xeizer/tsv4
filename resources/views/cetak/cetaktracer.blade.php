@@ -104,7 +104,7 @@
     <tr>
         <td width="40%">
             <p><br>Kasubag. Pusat Karir dan Tracer Study</p>
-            <img src="{{ asset('gambarumum/ttd_mega.png') }}" class="gambar_ttd" style="width: 200">
+            <img src="{{ asset('gambarumum/ttd_mega.png') }}" class="gambar_ttd" style="width: 100">
             <p><b><u>Tri Mega Ralasari S., M.Pd</u></b>
                 <br><b>NPP. 202 2012 218</b></p>
         </td>
