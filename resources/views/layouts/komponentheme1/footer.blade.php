@@ -43,7 +43,7 @@
             <a href="http://kemahasiswaan.ikippgriptk.ac.id/">Kemahasiswaan IKIP-PGRI Pontianak</a>
           </li>
           <li>
-            <a href="https://kopertis11.or.id/">Kopertis XI</a>
+            <a href="https://lldikti11.ristekdikti.go.id//">LLDIKTI XI</a>
           </li>
           <li>
             <a href="http://belmawa.ristekdikti.go.id/">Belmawa DIKTI</a>

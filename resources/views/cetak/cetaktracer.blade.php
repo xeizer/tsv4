@@ -107,9 +107,9 @@
     <tr>
         <td width="40%">
             <p><br>Kasubag. Pusat Karir dan Tracer Study</p>
-            <img src="{{ asset('gambarumum/ttd_norsidi.jpg') }}" class="gambar_ttd" style="width: 200">
-            <p><b><u>Norsidi, M.Pd.</u></b>
-                <br><b>NPP. 202 2014 286</b></p>
+            <img src="{{ asset('gambarumum/ttd_mega.jpg') }}" class="gambar_ttd" style="width: 200">
+            <p><b><u>Tri Mega Ralasari S., M.Pd</u></b>
+                <br><b>NPP. 202 2012 218</b></p>
         </td>
         <td width="20%"><img
                 src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(100)->generate($nama." ".date('d-m-Y H:i:s', strtotime($selesai)))) !!} "

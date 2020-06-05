@@ -331,7 +331,7 @@
 </div>
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Kepuasan Pengguna Lulusan</h3>
+        <h3 class="box-title">Tanggapan Lulusan Terhadap Metode Pembelajaran</h3>
     </div>
     <div class="box-body">
         <table class="table table-bordered">
@@ -341,7 +341,7 @@
                     <th rowspan="3">Tahun Lulus<br></th>
                     <th rowspan="3">Jumlah Lulusan<br></th>
                     <th rowspan="3">Jumlah Lulusan Tercatat</th>
-                    <th colspan="21">Jumlah Tanggapan Kepuasan Pengguna yang Terlacak</th>
+                    <th colspan="21">Jumlah Tanggapan Lulusan Terlacak</th>
                 </tr>
                 <tr>
                     <th colspan="3">Perkuliahan</th>

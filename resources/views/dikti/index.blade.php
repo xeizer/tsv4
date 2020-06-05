@@ -9,16 +9,16 @@
         <table class="table table-bordered">
             <thead class="bg-primary">
                 <tr>
-                    <th rowspan="2">No</th>
-                    <th rowspan="2">Tahun Lulus<br></th>
-                    <th rowspan="2">Jumlah Lulusan<br></th>
-                    <th rowspan="2">Prodi</th>
-                    <th colspan="3">IPK</th>
+                    <th rowspan="2"><center>No</th>
+                    <th rowspan="2"><center>Tahun Lulus<br></th>
+                    <th rowspan="2"><center>Jumlah Lulusan<br></th>
+                    <th rowspan="2"><center>Program Studi</th>
+                    <th colspan="3"><center>IPK</th>
                 </tr>
                 <tr>
-                    <td>Min<br></td>
-                    <td>Avg.</td>
-                    <td>Max</td>
+                    <td><center>Min<br></td>
+                    <td><center>Rerata</td>
+                    <td><center>Max</td>
                 </tr>
             </thead>
             <tbody>
@@ -60,23 +60,23 @@
         <table class="table table-bordered">
             <thead class="bg-primary">
                 <tr>
-                    <th rowspan="2">No<br></th>
-                    <th rowspan="2">Angkatan<br></th>
-                    <th rowspan="2">Jumlah Lulusan Tercatat<br></th>
-                    <th colspan="3">Tercepat</th>
-                    <th colspan="3">Terlama<br></th>
-                    <th colspan="3">Rerata</th>
+                    <th rowspan="2"><center>No<br></th>
+                    <th rowspan="2"><center>Angkatan<br></th>
+                    <th rowspan="2"><center>Jumlah Lulusan Tercatat<br></th>
+                    <th colspan="3"><center>Tercepat</th>
+                    <th colspan="3"><center>Terlama<br></th>
+                    <th colspan="3"><center>Rerata</th>
                 </tr>
                 <tr>
-                    <td>Tahun</td>
-                    <td>Bulan<br></td>
-                    <td>Hari</td>
-                    <td>Tahun</td>
-                    <td>Bulan</td>
-                    <td>Hari</td>
-                    <td>Tahun</td>
-                    <td>Bulan</td>
-                    <td>Hari</td>
+                    <td><center>Tahun</td>
+                    <td><center>Bulan<br></td>
+                    <td><center>Hari</td>
+                    <td><center>Tahun</td>
+                    <td><center>Bulan</td>
+                    <td><center>Hari</td>
+                    <td><center>Tahun</td>
+                    <td><center>Bulan</td>
+                    <td><center>Hari</td>
                 </tr>
             </thead>
             <tbody>
@@ -128,16 +128,16 @@
         <table class="table table-bordered">
             <thead class="bg-primary">
                 <tr>
-                    <th rowspan="2">No</th>
-                    <th rowspan="2">Nama Kegiatan<br></th>
-                    <th rowspan="2">Prodi</th>
-                    <th colspan="3">Tingkat</th>
-                    <th rowspan="2">Prestasi yang Dicapai<br></th>
+                    <th rowspan="2"><center>No</th>
+                    <th rowspan="2"><center>Nama Kegiatan<br></th>
+                    <th rowspan="2"><center>Prodi</th>
+                    <th colspan="3"><center>Tingkat</th>
+                    <th rowspan="2"><center>Prestasi yang Dicapai<br></th>
                 </tr>
                 <tr>
-                    <td>Lokal</td>
-                    <td>Nasional</td>
-                    <td>Internasional<br></td>
+                    <td><center>Lokal</td>
+                    <td><center>Nasional</td>
+                    <td><center>Internasional<br></td>
                 </tr>
             </thead>
             <tbody>
@@ -163,16 +163,16 @@
         <table class="table table-bordered">
             <thead class="bg-primary">
                 <tr>
-                    <th rowspan="2">No</th>
-                    <th rowspan="2">Nama Kegiatan<br></th>
-                    <th rowspan="2">Prodi</th>
-                    <th colspan="3">Tingkat</th>
-                    <th rowspan="2">Prestasi yang Dicapai<br></th>
+                    <th rowspan="2"><center>No</th>
+                    <th rowspan="2"><center>Nama Kegiatan<br></th>
+                    <th rowspan="2"><center>Prodi</th>
+                    <th colspan="3"><center>Tingkat</th>
+                    <th rowspan="2"><center>Prestasi yang Dicapai<br></th>
                 </tr>
                 <tr>
-                    <td>Lokal</td>
-                    <td>Nasional</td>
-                    <td>Internasional<br></td>
+                    <td><center>Lokal</td>
+                    <td><center>Nasional</td>
+                    <td><center>Internasional<br></td>
                 </tr>
             </thead>
             <tbody>
@@ -250,15 +250,15 @@
         <table class="table table-bordered">
             <thead class="bg-primary">
                 <tr>
-                    <th rowspan="2">Tahun lulus<br></th>
-                    <th rowspan="2">Jumlah Lulusan<br></th>
-                    <th rowspan="2">Jumlah Lulusan Tercatat<br></th>
-                    <th colspan="3">Jumlah lulusan dengan waktu tunggu mendapatkan pekerjaan<br></th>
+                    <th rowspan="2"><center>Tahun lulus<br></th>
+                    <th rowspan="2"><center>Jumlah Lulusan<br></th>
+                    <th rowspan="2"><center>Jumlah Lulusan Tercatat<br></th>
+                    <th colspan="3"><center>Jumlah lulusan dengan waktu tunggu mendapatkan pekerjaan<br></th>
                 </tr>
                 <tr>
-                    <td>WT &lt; 6<br></td>
-                    <td>WT &gt; 6 dan &lt;18</td>
-                    <td>WT &gt; 18<br></td>
+                    <td><center>WT &lt; 6<br></td>
+                    <td><center>WT &gt; 6 dan &lt;18</td>
+                    <td><center>WT &gt; 18<br></td>
                 </tr>
             </thead>
             <tbody>
@@ -310,15 +310,15 @@
         <table class="table table-bordered">
             <thead class="bg-primary">
                 <tr>
-                    <th rowspan="2">Tahun lulus<br></th>
-                    <th rowspan="2">Jumlah Lulusan<br></th>
-                    <th rowspan="2">Jumlah Lulusan Tercatat<br></th>
-                    <th colspan="3">Jumlah lulusan dengan tingkat keseuaian bidang kerja<br></th>
+                    <th rowspan="2"><center>Tahun lulus<br></th>
+                    <th rowspan="2"><center>Jumlah Lulusan<br></th>
+                    <th rowspan="2"><center>Jumlah Lulusan Tercatat<br></th>
+                    <th colspan="3"><center>Jumlah lulusan dengan tingkat keseuaian bidang kerja<br></th>
                 </tr>
                 <tr>
-                    <td>Rendah<br></td>
-                    <td>Sedang<br></td>
-                    <td>Tinggi<br></td>
+                    <td><center>Rendah<br></td>
+                    <td><center>Sedang<br></td>
+                    <td><center>Tinggi<br></td>
                 </tr>
             </thead>
             <tbody>
@@ -371,16 +371,16 @@
         <table class="table table-bordered">
             <thead class="bg-primary">
                 <tr>
-                    <th rowspan="2">Tahun lulus</th>
-                    <th rowspan="2">Jumlah Lulusan</th>
-                    <th rowspan="2">Jumlah Lulusan Tercata</th>
-                    <th rowspan="2">Jumlah Lulusan yang Telah Bekerja Berwirausaha</th>
-                    <th colspan="3">Jumlah Lulusan yang Bekerja Berdasarkan Tingkat/Ukuran Tempat Kerja/Berwirausah</th>
+                    <th rowspan="2"><center>Tahun lulus</th>
+                    <th rowspan="2"><center>Jumlah Lulusan</th>
+                    <th rowspan="2"><center>Jumlah Lulusan Tercata</th>
+                    <th rowspan="2"><center>Jumlah Lulusan yang Telah Bekerja Berwirausaha</th>
+                    <th colspan="3"><center>Jumlah Lulusan yang Bekerja Berdasarkan Tingkat/Ukuran Tempat Kerja/Berwirausah</th>
                 </tr>
                 <tr>
-                    <td>Lokal Wilayah Berwirausah tidak Berbadan Hukum</td>
-                    <td>Nasional Berwirausaha Berbadan Hukum</td>
-                    <td>Multinasional/Internasiona</td>
+                    <td><center>Lokal Wilayah Berwirausah tidak Berbadan Hukum</td>
+                    <td><center>Nasional Berwirausaha Berbadan Hukum</td>
+                    <td><center>Multinasional/Internasiona</td>
                 </tr>
             </thead>
             <tbody>
@@ -404,47 +404,47 @@
 </div>
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Kepuasan Pengguna Lulusan</h3>
+        <h3 class="box-title">Tanggapan Lulusan Terhadap Metode Pembelajaran</h3>
     </div>
     <div class="box-body">
         <table class="table table-bordered">
             <thead class="bg-primary">
                 <tr>
-                    <th rowspan="3">No</th>
-                    <th rowspan="3">Tahun Lulus<br></th>
-                    <th rowspan="3">Jumlah Lulusan<br></th>
-                    <th rowspan="3">Jumlah Lulusan Tercatat</th>
-                    <th colspan="21">Jumlah Tanggapan Kepuasan Pengguna yang Terlacak</th>
+                    <th rowspan="3"><center>No</th>
+                    <th rowspan="3"><center>Tahun Lulus<br></th>
+                    <th rowspan="3"><center>Jumlah Lulusan<br></th>
+                    <th rowspan="3"><center>Jumlah Lulusan Tercatat</th>
+                    <th colspan="21"><center>Aspek Tanggapan</th>
                 </tr>
                 <tr>
-                    <th colspan="3">Perkuliahan</th>
-                    <th colspan="3">Demonstrasi</th>
-                    <th colspan="3">partisipasi proyek riset</th>
-                    <th colspan="3">magang</th>
-                    <th colspan="3">praktikum</th>
-                    <th colspan="3">PKL</th>
-                    <th colspan="3">Diskusi</th>
+                    <th colspan="3"><center>Perkuliahan</th>
+                    <th colspan="3"><center>Demonstrasi</th>
+                    <th colspan="3"><center>Partisipasi proyek riset</th>
+                    <th colspan="3"><center>Magang</th>
+                    <th colspan="3"><center>Praktikum</th>
+                    <th colspan="3"><center>Kerja Lapangan</th>
+                    <th colspan="3"><center>Diskusi</th>
                 </tr>
                 <tr>
-                    <th>SB</th>
+                    <th>B</th>
                     <th>C</th>
                     <th>K</th>
-                     <th>SB</th>
+                     <th>B</th>
                     <th>C</th>
                     <th>K</th>
-                     <th>SB</th>
+                     <th>B</th>
                     <th>C</th>
                     <th>K</th>
-                     <th>SB</th>
+                     <th>B</th>
                     <th>C</th>
                     <th>K</th>
-                     <th>SB</th>
+                     <th>B</th>
                     <th>C</th>
                     <th>K</th>
-                     <th>SB</th>
+                     <th>B</th>
                     <th>C</th>
                     <th>K</th>
-                     <th>SB</th>
+                     <th>B</th>
                     <th>C</th>
                     <th>K</th>
                 </tr>
