@@ -37,7 +37,7 @@
                 <div class="mb-4">
                 </div>
                 <header>
-                    <img src="{{ asset('gambarumum/PPK_header.jpg') }}" style="width: 100%">
+                    {{--<img src="{{ asset('gambarumum/PPK_header.jpg') }}" style="width: 100%">--}}
                 </header>
             </div>
             <!-- Light header -->
@@ -46,7 +46,7 @@
 
         </div>
         <div class="title-head">
-            <h3 class="small-title text-center">SURAT PERNYATAAN<br>BUKTI PENGISIAN TRACER STUDY</h3>
+            <h3 class="small-title text-center">SURAT PERNYATAAN<br>BUKTI PENGISIAN FEEDBACK KOMPETENSI LULUSAN<br>OLEH STAKEHOLDER</h3>
         </div>
         <div class="col-md-8 col-sm-8">
             <p style="margin-left: 40px">Yang bertanda tangan dibawah ini :</p>
@@ -93,7 +93,7 @@
                     <td width="200"> {{ $email }}</td>
                 </tr>
                 <tr>
-                    <td width='230'>Nama Alumni</td>
+                    <td width='230'>Nama Alumni yang di nilai</td>
                     <td>:</td>
                     <td width="200"> {{ $namamahasiswa }}</td>
                 </tr>
@@ -106,23 +106,23 @@
 
 
         </div>
-        <p style="margin: 5%" align="justify">Dengan ini saya menyatakan telah mengisi data tracer study yang akan
-            digunakan
-            sebagai salah satu
-            syarat untuk pengambilan dan legalisir ijazah di IKIP-PGRI Pontianak. Demikian surat pernyataan ini
+        <p style="margin: 5%" align="justify">Dengan ini saya menyatakan telah mengisi data feedback stakeholder terkait kompetensi
+            lulusan
+            IKIP PGRI Pontianak.
+            Demikian surat pernyataan ini
             dibuat dengan penuh kesadaran dan rasa tanggung jawab untuk dapat dipergunakan sebagaimana mestinya.
         </p>
         <table align="center" width="90%"">
     <tr>
         <td width=" 40%">
-            <p><br>Kasubag. Pusat Karir dan Tracer Study</p>
+            {{--<p><br>Kasubag. Pusat Karir dan Tracer Study</p>
             <img src="{{ asset('gambarumum/ttd_norsidi.jpg') }}" class="gambar_ttd" style="width: 200">
-            <p><b><u>Norsidi, M.Pd.</u></b>
+            <p><b><u>Tri Megalarasi, M.Pd.</u></b>
                 <br><b>NPP. 202 2014 286</b></p>
             </td>
             <td width="20%"><img
                     src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(100)->generate($nama." ".date('d-m-Y H:i:s', strtotime($selesai)))) !!} "
-                    style="width: 100"></td>
+                    style="width: 100"></td>--}}
             <td width="30%">
                 <p>Pontianak, {{date('d-m-Y', strtotime($selesai))}}<br>
                     Pimpinan</p>

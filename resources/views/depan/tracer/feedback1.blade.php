@@ -6,7 +6,7 @@
           <div class="col-md-10">
             <!-- log forms -->
 			<div class="mb-40"></div>
-            <h3 class="text-center title-head">Tracer Study IKIP-PGRI Pontianak</h3>
+            <h3 class="text-center title-head">Tracer Study IKIP PGRI Pontianak</h3>
 			<p class="lead text-left">Bapak/Ibu pimpinan dari mahasiswa <strong>{{Auth::user()->stakeholder->mahasiswa->user->name}}</strong>, Kami Mohon kerjasamanya untuk dapat mengisi Angket berikut untuk menilai kualitas dari Alumni Kami</p>
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -27,7 +27,7 @@
 		            <form name="registrasi" action="{{route('tracer.stakeholder.simpan')}}" method="post">
 		                {{ csrf_field() }}
 		                <div class="form-group">
-		                    <label id="lblBekerja" class="lead">Nama</label>
+		                    <label id="lblBekerja" class="lead">Nama Atasan</label>
 		                    @if ($errors->has('nama'))
 				              <span class="invalid-feedback" role="alert">
 				                  <strong class="text-danger">Mohon Untuk Diisi</strong>
@@ -121,7 +121,7 @@
 		        <div id="register-form">
 		            <h3 class="log-title">Feedback</h3>
 		            <div class="form-group">
-		                <label id="lblBekerja" class="lead">Pada saat lulus, pada tingkat mana kompetensi anda DAN bagaimana kontribusi Perguruan Tinggi (PT) dalam hal kompetensi anda</label>
+		                <label id="lblBekerja" class="lead">Tanggapan terhadap tingkat kompetensi lulusan / alumni</label>
 		                <table class="table table-1 table-bordered table-hover">
 		                    <thead>
 		                        <tr>
