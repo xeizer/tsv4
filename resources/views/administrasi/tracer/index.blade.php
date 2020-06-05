@@ -1,6 +1,6 @@
 @extends('layouts.theme2')
 @section('isi')
-@if((!isset($data['mahasiswabelumisi']))||($data['mahasiswabelumisi']==0)||$data['mahasiswaselesaiisi']==0)
+@if((!isset($data))||(!isset($data['mahasiswabelumisi']))||($data['mahasiswabelumisi']==0)||($data['mahasiswaselesaiisi']==0))
 <div class="row">
     <div class="col-md-12">
         <div class="alert alert-danger" role="alert">
@@ -362,6 +362,7 @@
                 </div>
             </div>
             <div class="box-body">
+                @if($data['kerja']>0)
                 <table class="table">
                     <tr>
                         <td>Lebih dari 18 Bulan</td>
@@ -379,6 +380,7 @@
                         <td>{{number_format($data['kurang6']/$data['kerja']*100,2)}} %</td>
                     </tr>
                 </table>
+                @endif
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
