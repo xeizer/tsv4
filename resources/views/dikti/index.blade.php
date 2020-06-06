@@ -253,74 +253,16 @@
                     <th rowspan="2" style="vertical-align: middle; text-align: center">Tahun lulus<br></th>
                     <th rowspan="2" style="vertical-align: middle; text-align: center">Jumlah Lulusan<br></th>
                     <th rowspan="2" style="vertical-align: middle; text-align: center">Jumlah Lulusan Tercatat<br></th>
-                    <th colspan="3" style="vertical-align: middle; text-align: center">Jumlah lulusan dengan waktu tunggu mendapatkan pekerjaan<br></th>
+                    <th colspan="7" style="vertical-align: middle; text-align: center">Jumlah lulusan dengan waktu tunggu mendapatkan pekerjaan<br></th>
                 </tr>
                 <tr>
                     <td style="vertical-align: middle; text-align: center">WT &lt; 6<br>Sebelum Lulus</td>
                     <td style="vertical-align: middle; text-align: center">WT &gt; 6 dan &lt;18<br>Sebelum Lulus</td>
                     <td style="vertical-align: middle; text-align: center">WT &gt; 18<br>Sebelum Lulus</td>
-                </tr>
-            </thead>
-            <tbody>
-                @if($prodi==1)
-                @foreach ($tahun as $t)
-                <tr>
-                    <td>{{$t->tahun_lulus}}</td>
-                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->count()}}</td>
-                    <td>{{App\Mahasiswam::where('tahun_lulus',$t->tahun_lulus)->where('status','99')->count()}}</td>
-                    <td>{{App\Mahasiswam::where('status', 99)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
-                        $q->where('f301',1)->where('f302','<',6);
-                    })->count()}}
-                    </td>
-                    <td>{{App\Mahasiswam::where('status', 99)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
-                        $q->where('f301',1)->where('f302','>=',6)->where('f302','<=',18);
-                    })->count()}}</td>
-                    <td>{{App\Mahasiswam::where('status', 99)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
-                        $q->where('f301',1)->where('f302','>',18);
-                    })->count()}}</td>
-                </tr>
-                @endforeach
-                @else
-                @foreach ($tahun as $t)
-                <tr>
-                    <td>{{$t->tahun_lulus}}</td>
-                    <td>{{App\Mahasiswam::where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->count()}}</td>
-                    <td>{{App\Mahasiswam::where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->count()}}</td>
-                    <td>{{App\Mahasiswam::where('status', 99)->where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
-                        $q->where('f301',1)->where('f302','<',6);
-                    })->count()}}
-                    </td>
-                    <td>{{App\Mahasiswam::where('status', 99)->where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
-                        $q->where('f301',1)->where('f302','>=',6)->where('f302','<=',18);
-                    })->count()}}</td>
-                    <td>{{App\Mahasiswam::where('status', 99)->where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
-                        $q->where('f301',1)->where('f302','>',18);
-                    })->count()}}</td>
-                </tr>
-                @endforeach
-                @endif
-            </tbody>
-        </table>
-    </div>
-    <!-- /.box-body -->
-</div>
-<div class="box box-primary">
-    <div class="box-header with-border">
-        <h3 class="box-title">Waktu Tunggu Lulusan</h3>
-    </div>
-    <div class="box-body">
-        <table class="table table-bordered">
-            <thead class="bg-primary">
-                <tr>
-                    <th rowspan="2" style="vertical-align: middle; text-align: center">Tahun lulus<br></th>
-                    <th rowspan="2" style="vertical-align: middle; text-align: center">Jumlah Lulusan<br></th>
-                    <th rowspan="2" style="vertical-align: middle; text-align: center">Jumlah Lulusan Tercatat<br></th>
-                    <th colspan="3" style="vertical-align: middle; text-align: center">Jumlah lulusan dengan waktu tunggu mendapatkan pekerjaan<br></th>
-                </tr>
-                <tr>
                     <td style="vertical-align: middle; text-align: center">WT &lt; 6<br>Setelah Lulus</td>
                     <td style="vertical-align: middle; text-align: center">WT &gt; 6 dan &lt;18<br>Setelah Lulus</td>
                     <td style="vertical-align: middle; text-align: center">WT &gt; 18<br>Setelah Lulus</td>
+                    <td style="vertical-align: middle; text-align: center">Tidak Mencari Kerja</td>
                 </tr>
             </thead>
             <tbody>
@@ -330,6 +272,16 @@
                     <td>{{$t->tahun_lulus}}</td>
                     <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->count()}}</td>
                     <td>{{App\Mahasiswam::where('tahun_lulus',$t->tahun_lulus)->where('status','99')->count()}}</td>
+                    <td>{{App\Mahasiswam::where('status', 99)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
+                        $q->where('f301',1)->where('f302','<',6);
+                    })->count()}}
+                    </td>
+                    <td>{{App\Mahasiswam::where('status', 99)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
+                        $q->where('f301',1)->where('f302','>=',6)->where('f302','<=',18);
+                    })->count()}}</td>
+                    <td>{{App\Mahasiswam::where('status', 99)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
+                        $q->where('f301',1)->where('f302','>',18);
+                    })->count()}}</td>
                     <td>{{App\Mahasiswam::where('status', 99)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
                         $q->where('f301', 2)->where('f301',2);
                     })->count()}}
@@ -340,6 +292,9 @@
                     <td>{{App\Mahasiswam::where('status', 99)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
                         $q->where('f301', 2)->where('f303','>',18);
                     })->count()}}</td>
+                    <td>{{App\Mahasiswam::where('status', 99)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
+                        $q->where('f301', 3);
+                    })->count()}}</td>
                 </tr>
                 @endforeach
                 @else
@@ -349,6 +304,16 @@
                     <td>{{App\Mahasiswam::where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->count()}}</td>
                     <td>{{App\Mahasiswam::where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->count()}}</td>
                     <td>{{App\Mahasiswam::where('status', 99)->where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
+                        $q->where('f301',1)->where('f302','<',6);
+                    })->count()}}
+                    </td>
+                    <td>{{App\Mahasiswam::where('status', 99)->where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
+                        $q->where('f301',1)->where('f302','>=',6)->where('f302','<=',18);
+                    })->count()}}</td>
+                    <td>{{App\Mahasiswam::where('status', 99)->where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
+                        $q->where('f301',1)->where('f302','>',18);
+                    })->count()}}</td>
+                     <td>{{App\Mahasiswam::where('status', 99)->where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
                         $q->where('f301', 2)->where('f303','<',6);
                     })->count()}}
                     </td>
@@ -358,6 +323,9 @@
                     <td>{{App\Mahasiswam::where('status', 99)->where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
                         $q->where('f301', 2)->where('f303','>',18);
                     })->count()}}</td>
+                    <td>{{App\Mahasiswam::where('status', 99)->where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f3', function ($q){
+                        $q->where('f301', 3);
+                    })->count()}}</td>
                 </tr>
                 @endforeach
                 @endif
@@ -366,6 +334,7 @@
     </div>
     <!-- /.box-body -->
 </div>
+
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">Kesesuaian Bidang Kerja Lulusan</h3>
