@@ -120,6 +120,7 @@
     </div>
     <!-- /.box-body -->
 </div>
+{{--}}
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">Prestasi Akademik</h3>
@@ -190,7 +191,7 @@
     </div>
     <!-- /.box-body -->
 </div>
-{{--}}
+
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">Masa Studi Lulusan</h3>
@@ -349,9 +350,9 @@
                     <th colspan="3"><center>Jumlah lulusan dengan tingkat keseuaian bidang kerja<br></th>
                 </tr>
                 <tr>
-                    <td><center>Rendah<br></td>
-                    <td><center>Sedang<br></td>
                     <td><center>Tinggi<br></td>
+                    <td><center>Sedang<br></td>
+                    <td><center>Rendah<br></td>
                 </tr>
             </thead>
             <tbody>
@@ -417,6 +418,47 @@
                 </tr>
             </thead>
             <tbody>
+                @if($prodi==1)
+                @foreach($tahun as $t)
+                <tr>
+                    <td>{{$t->tahun_lulus}}</td>
+                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->count()}}</td>
+                    <td>{{App\Mahasiswam::where('tahun_lulus',$t->tahun_lulus)->where('status','99')->count()}}</td>
+                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->whereHas('f8', function ($q){
+                        $q->where('f8', 1);
+                    })->count()}}</td>
+                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->whereHas('f8a', function ($q){
+                        $q->where('f8a', 1);
+                    })->count()}}</td>
+                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->whereHas('f8a', function ($q){
+                        $q->where('f8a', 2);
+                    })->count()}}</td>
+                    <td>{{App\Mahasiswam::where('tahun_lulus', $t->tahun_lulus)->whereHas('f8a', function ($q){
+                        $q->where('f8a', 3);
+                    })->count()}}</td>
+                </tr>
+                @endforeach
+                @else
+                @foreach($tahun as $t)
+                <tr>
+                    <td>{{$t->tahun_lulus}}</td>
+                    <td>{{App\Mahasiswam::where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->count()}}</td>
+                    <td>{{App\Mahasiswam::where('prodim_id', $prodi)->where('tahun_lulus',$t->tahun_lulus)->where('status','99')->count()}}</td>
+                    <td>{{App\Mahasiswam::where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f8', function ($q){
+                        $q->where('f8', 1);
+                    })->count()}}</td>
+                    <td>{{App\Mahasiswam::where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f8a', function ($q){
+                        $q->where('f8a', 1);
+                    })->count()}}</td>
+                    <td>{{App\Mahasiswam::where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f8a', function ($q){
+                        $q->where('f8a', 2);
+                    })->count()}}</td>
+                    <td>{{App\Mahasiswam::where('prodim_id', $prodi)->where('tahun_lulus', $t->tahun_lulus)->whereHas('f8a', function ($q){
+                        $q->where('f8a', 3);
+                    })->count()}}</td>
+                </tr>
+                @endforeach
+                @endif
                 <tr>
                     <td></td>
                     <td></td>

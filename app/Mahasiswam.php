@@ -127,6 +127,10 @@ class Mahasiswam extends Model
     {
         return $this->hasOne('App\F8m');
     }
+    public function f8a()
+    {
+        return $this->hasOne('App\F8a');
+    }
     public function f9()
     {
         return $this->hasOne('App\F9m');
