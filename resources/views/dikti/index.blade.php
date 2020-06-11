@@ -473,7 +473,7 @@
     </div>
     <!-- /.box-body -->
     <div class="box-footer">
-        footer
+
     </div>
     <!-- /.box-footer-->
 </div>

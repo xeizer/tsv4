@@ -68,11 +68,11 @@
     </ul>
 </li>
 <li class="header">LAPORAN</li>
-{{--
+
 <li class="treeview @isset ($active) @if($active==6)active @endif @endisset">
     <a href="#">
         <i class="fa fa-files-o"></i>
-        <span>Dikti</span>
+        <span>Excel Dikti</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>
@@ -91,7 +91,7 @@
     </ul>
 
 </li>
---}}
+
 <li class="treeview @isset ($active) @if($active==7)active @endif @endisset">
     <a href="#">
         <i class="fa fa-files-o"></i>
@@ -113,11 +113,11 @@
     </ul>
 
 </li>
-{{--
+
 <li class="header">Tambahan</li>
 <li class="@isset ($active) @if($active=="option1")active @endif @endisset">
     <a href="{{route('dikti.import')}}">
         <i class="fa fa-dashboard"></i> <span>Import Dari Dikti</span>
     </a>
 </li>
---}}
+

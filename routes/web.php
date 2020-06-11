@@ -69,6 +69,7 @@ Route::prefix('/alumni/pribadi')->middleware('role:mahasiswa')->group(function (
 });
 ////// Area Tracer /////
 Route::prefix('/tracer')->middleware('role:mahasiswa')->group(function () {
+    Route::get('/reset', 'TracerController@resetTracer');
     Route::get('/f1', 'TracerController@tampilf1')->name('tracer.f1');
     Route::post('/f1/simpan', 'TracerController@simpanf1')->name('simpan.f1');
     Route::get('/f2', 'TracerController@tampilf2')->name('tracer.f2');

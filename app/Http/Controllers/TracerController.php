@@ -32,6 +32,30 @@ use App\Stakeholderm;
 class TracerController extends Controller
 {
     //
+    public function resetTracer()
+    {
+        $mahasiswa_id = Auth::user()->mahasiswa->id;
+        F2m::destroy($mahasiswa_id);
+        F3m::destroy($mahasiswa_id);
+        F4m::destroy($mahasiswa_id);
+        F5m::destroy($mahasiswa_id);
+        F6m::destroy($mahasiswa_id);
+        F7m::destroy($mahasiswa_id);
+        F7am::destroy($mahasiswa_id);
+        F8m::destroy($mahasiswa_id);
+        F8a::destroy($mahasiswa_id);
+        F9m::destroy($mahasiswa_id);
+        F10m::destroy($mahasiswa_id);
+        F11m::destroy($mahasiswa_id);
+        F12m::destroy($mahasiswa_id);
+        F13m::destroy($mahasiswa_id);
+        F14m::destroy($mahasiswa_id);
+        F15m::destroy($mahasiswa_id);
+        F16m::destroy($mahasiswa_id);
+        F17am::destroy($mahasiswa_id);
+        F17bm::destroy($mahasiswa_id);
+        Mahasiswam::find($mahasiswa_id)->update(['status' => 2]);
+    }
     public function tampilf1()
     {
         if (Auth::user()->mahasiswa->status != 1) {

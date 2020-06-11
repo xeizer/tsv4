@@ -22,7 +22,7 @@
                     @endif
                     <h3 class="card-title">{{Auth::user()->name}}</h3>
                     <div class="meta">
-                        <a>{{session('datauser')->prodi->nama_prodi}}</a>
+                        <a>{{Auth::user()->mahasiswa->prodi->nama_prodi}}</a>
                     </div>
                     <div class="description">
                         <table class="table table-hover">
@@ -39,12 +39,12 @@
                             <tr>
                                 <td style="text-align: left">Fakultas</td>
                                 <td style="text-align: left">:</td>
-                                <td style="text-align: left">{{session('datauser')->prodi->fakultas->nama_fakultas}}</td>
+                                <td style="text-align: left">{{Auth::user()->mahasiswa->prodi->fakultas->nama_fakultas}}</td>
                             </tr>
                             <tr>
                                 <td style="text-align: left">Prodi</td>
                                 <td style="text-align: left">:</td>
-                                <td style="text-align: left">{{session('datauser')->prodi->nama_prodi}}</td>
+                                <td style="text-align: left">{{Auth::user()->mahasiswa->prodi->nama_prodi}}</td>
                             </tr>
                             <tr>
                                 <td style="text-align: left">Email</td>
