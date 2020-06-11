@@ -55,6 +55,9 @@ class TracerController extends Controller
         F17am::destroy($mahasiswa_id);
         F17bm::destroy($mahasiswa_id);
         Mahasiswam::find($mahasiswa_id)->update(['status' => 2]);
+        return view('depan.tracer.f2')->with([
+            'aktif' => 'tracer',
+        ]);
     }
     public function tampilf1()
     {
