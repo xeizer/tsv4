@@ -212,6 +212,7 @@ class AdministrasiController extends Controller
             'ipk' => $req->ipk,
             'semester_lulus' => $req->semesterlulus,
             'tahun_lulus' => $req->tahunlulus,
+            'angkatan' => $req->angkatan,
             'durasi_tahun' => $req->durasitahun,
             'durasi_bulan' => $req->durasibulan,
             'durasi_hari' => $req->durasihari,
@@ -284,6 +285,7 @@ class AdministrasiController extends Controller
         $mahasiswa->ipk = $req->ipk;
         $mahasiswa->semester_lulus = $req->semesterlulus;
         $mahasiswa->tahun_lulus = $req->tahunlulus;
+        $mahasiswa->angkatan = $req->angkatan;
         $mahasiswa->durasi_tahun = $req->durasitahun;
         $mahasiswa->durasi_bulan = $req->durasibulan;
         $mahasiswa->durasi_hari = $req->durasihari;

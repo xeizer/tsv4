@@ -191,11 +191,17 @@
                     <div class="form-group">
                         <label for="inputTahun" class="col-sm-2 control-label">Tahun Lulus</label>
 
-                        <div class="col-sm-5">
+                        <div class="col-sm-3">
                             <input type="number" min="1000" max="9999" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="tahunlulus"  class="form-control" id="inputtahun" placeholder="Tahun Lulus">
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-3">
                             <input type="number" min="1" max="2" maxlength="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="semesterlulus" class="form-control" id="inputsemester" placeholder="Semester Lulus">
+                        </div>
+                        <div class="col-md-1">
+                            <label for="inputAngkatan" class="control-label">Angkatan</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" id="inputAngkatan" name="angkatan" class="form-control">
                         </div>
                     </div>
 
@@ -370,6 +376,7 @@
         prodi= ini.attr('data-prodi'),
         tahunlulus= ini.attr('data-tahunlulus'),
         semesterlulus= ini.attr('data-semesterlulus'),
+        angkatan = ini.attr('data-angkatan'),
         durasitahun= ini.attr('data-durasitahun'),
         durasibulan= ini.attr('data-durasibulan'),
         durasihari= ini.attr('data-durasihari'),
@@ -381,6 +388,7 @@
         $('#inputEmail').attr('value', email);
         $('#inputNIM').attr('value',nim);
         $('#inputtahun').attr('value',tahunlulus);
+        $('#inputAngkatan').attr('value',angkatan);
         $('#inputsemester').attr('value',semesterlulus);
         $('#inputdurasitahun').attr('value',durasitahun);
         $('#inputdurasibulan').attr('value',durasibulan);

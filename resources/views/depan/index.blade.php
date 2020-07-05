@@ -36,7 +36,7 @@
                 </span>
                 <span>
                   <i class="fa fa-user"></i>
-                  Di Posting Oleh : {{ $a->user->name }}
+                  Di Posting Oleh : {{ $a->user->name ?? '' }}
                   <br />
                   <i class="fa fa-clock-o"></i>
                     Pada : {{ date('d-m-Y H:i:s', strtotime($a->created_at)) }}

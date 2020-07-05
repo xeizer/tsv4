@@ -212,28 +212,47 @@ class TracerController extends Controller
             }
         }
         if (F4m::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first()) {
-            $f4 = F4m::where('mahasiswam_id', Auth::user()->mahasiswa->id);
+            $f4 = F4m::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first();
+            $f4->mahasiswam_id = Auth::user()->mahasiswa->id;
+            $f4->f41 = $s[1];
+            $f4->f42 = $s[2];
+            $f4->f43 = $s[3];
+            $f4->f44 = $s[4];
+            $f4->f45 = $s[5];
+            $f4->f46 = $s[6];
+            $f4->f47 = $s[7];
+            $f4->f48 = $s[8];
+            $f4->f49 = $s[9];
+            $f4->f410 = $s[10];
+            $f4->f411 = $s[11];
+            $f4->f412 = $s[12];
+            $f4->f413 = $s[13];
+            $f4->f414 = $s[14];
+            $f4->f415 = $s[15];
+            $f4->f416 = $req->f416;
+            $f4->save();
         } else {
             $f4 = new F4m();
+            $f4->mahasiswam_id = Auth::user()->mahasiswa->id;
+            $f4->f41 = $s[1];
+            $f4->f42 = $s[2];
+            $f4->f43 = $s[3];
+            $f4->f44 = $s[4];
+            $f4->f45 = $s[5];
+            $f4->f46 = $s[6];
+            $f4->f47 = $s[7];
+            $f4->f48 = $s[8];
+            $f4->f49 = $s[9];
+            $f4->f410 = $s[10];
+            $f4->f411 = $s[11];
+            $f4->f412 = $s[12];
+            $f4->f413 = $s[13];
+            $f4->f414 = $s[14];
+            $f4->f415 = $s[15];
+            $f4->f416 = $req->f416;
+            $f4->save();
         }
-        $f4->mahasiswam_id = Auth::user()->mahasiswa->id;
-        $f4->f41 = $s[1];
-        $f4->f42 = $s[2];
-        $f4->f43 = $s[3];
-        $f4->f44 = $s[4];
-        $f4->f45 = $s[5];
-        $f4->f46 = $s[6];
-        $f4->f47 = $s[7];
-        $f4->f48 = $s[8];
-        $f4->f49 = $s[9];
-        $f4->f410 = $s[10];
-        $f4->f411 = $s[11];
-        $f4->f412 = $s[12];
-        $f4->f413 = $s[13];
-        $f4->f414 = $s[14];
-        $f4->f415 = $s[15];
-        $f4->f416 = $req->f416;
-        $f4->save();
+
         $mahasiswa = Mahasiswam::find(Auth::user()->mahasiswa->id);
         $mahasiswa->status = 5;
         $mahasiswa->update();
@@ -274,7 +293,7 @@ class TracerController extends Controller
 
         ]);
         if (F5m::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first()) {
-            $f5 = F5m::where('mahasiswam_id', Auth::user()->mahasiswa->id);
+            $f5 = F5m::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first();
         } else {
             $f5 = new F5m();
         }
@@ -288,7 +307,7 @@ class TracerController extends Controller
         $f5->save();
         //////////////////////////////////
         if (F6m::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first()) {
-            $f6 = F6m::where('mahasiswam_id', Auth::user()->mahasiswa->id);
+            $f6 = F6m::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first();
         } else {
             $f6 = new F6m();
         }
@@ -297,7 +316,7 @@ class TracerController extends Controller
         $f6->save();
         /////////////////////////////////
         if (F7m::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first()) {
-            $f7 = F7m::where('mahasiswam_id', Auth::user()->mahasiswa->id);
+            $f7 = F7m::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first();
         } else {
             $f7 = new F7m();
         }
@@ -306,7 +325,7 @@ class TracerController extends Controller
         $f7->save();
         /////////////////////////////////
         if (F7am::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first()) {
-            $f7a = F7am::where('mahasiswam_id', Auth::user()->mahasiswa->id);
+            $f7a = F7am::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first();
         } else {
             $f7a = new F7am();
         }
