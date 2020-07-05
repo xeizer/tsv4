@@ -29,7 +29,7 @@
                 </span>
                     <span>
                   <i class="fa fa-user"></i>
-                  Ditulis Oleh {{$a->user->name}} pada {{$a->updated_at}}
+                  Di Posting Oleh : {{ $a->user->name ?? '' }} pada {{$a->updated_at}}
                 </span>
                 </div>
             </div>
