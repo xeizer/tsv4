@@ -41,6 +41,7 @@
                         </div>
 
                     </div>
+                    <div id="multinasional">
                     <div class="form-group">
                         <label id="lblBekerja" class="lead">Jika Anda telah bekerja, Ruang Lingkup Pekerjaan Anda dalam Skala</label>
                         @if ($errors->has('f8A'))
@@ -59,6 +60,7 @@
                                 class="form-check-label" for="rKerjaA3">Multinasional / Internasional</label>
                         </div>
 
+                    </div>
                     </div>
 
                     <div class="log-line reg-form-1 no-margin">
@@ -99,6 +101,23 @@
     });
   });
                 </script>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#multinasional').hide();
+
+$('input:radio[name="f8"]').change(
+    function(){
+
+        if ($(this).is(':checked') && $(this).val() == '2') {
+            $('#multinasional').hide();
+        };
+        if ($(this).is(':checked') && $(this).val() == '1') {
+            $('#multinasional').show();
+        };
+    });
+                    });
+                </script>
+
  @endsection
 <!-- Akhir Berita -->
 @endsection

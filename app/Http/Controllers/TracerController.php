@@ -112,16 +112,19 @@ class TracerController extends Controller
             'f27.required' => 'Anda harus memilih salah satu pilihan pada pertanyaan Diskusi',
 
         ]);
-        $f2 = new F2m();
-        $f2->mahasiswam_id = Auth::user()->mahasiswa->id;
-        $f2->f21 = $req->f21;
-        $f2->f22 = $req->f22;
-        $f2->f23 = $req->f23;
-        $f2->f24 = $req->f24;
-        $f2->f25 = $req->f25;
-        $f2->f26 = $req->f26;
-        $f2->f27 = $req->f27;
-        $f2->save();
+        $f2 = F2m::updateOrCreate(
+            ['mahasiswam_id' => Auth::user()->mahasiswa->id],
+            [
+                'f21' => $req->f21,
+                'f22' => $req->f22,
+                'f23' => $req->f23,
+                'f24' => $req->f24,
+                'f25' => $req->f25,
+                'f26' => $req->f26,
+                'f27' => $req->f27,
+            ]
+        );
+
         $mahasiswa = Mahasiswam::find(Auth::user()->mahasiswa->id);
         $mahasiswa->status = 3;
         $mahasiswa->update();
@@ -148,15 +151,28 @@ class TracerController extends Controller
             'f302.required' => 'Anda harus mengisi jumlah bulan',
 
         ]);
-        $f3 = new F3m();
-        $f3->mahasiswam_id = Auth::user()->mahasiswa->id;
-        $f3->f301 = $req->f301;
-        if ($req->f301 == 1) {
-            $f3->f302 = $req->f302;
-        } elseif ($req->f301 == 2) {
-            $f3->f303 = $req->f302;
+        if (F3m::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first()) {
+            $f3 = F3m::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first();
+            $f3->mahasiswam_id = Auth::user()->mahasiswa->id;
+            $f3->f301 = $req->f301;
+            if ($req->f301 == 1) {
+                $f3->f302 = $req->f302;
+            } elseif ($req->f301 == 2) {
+                $f3->f303 = $req->f302;
+            }
+            $f3->save();
+        } else {
+            $f3 = new F3m();
+            $f3->mahasiswam_id = Auth::user()->mahasiswa->id;
+            $f3->f301 = $req->f301;
+            if ($req->f301 == 1) {
+                $f3->f302 = $req->f302;
+            } elseif ($req->f301 == 2) {
+                $f3->f303 = $req->f302;
+            }
+            $f3->save();
         }
-        $f3->save();
+
         $mahasiswa = Mahasiswam::find(Auth::user()->mahasiswa->id);
         if ($req->f301 == 3) {
             $mahasiswa->status = 8;
@@ -211,47 +227,27 @@ class TracerController extends Controller
                 $s[$i] = 0;
             }
         }
-        if (F4m::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first()) {
-            $f4 = F4m::where('mahasiswam_id', Auth::user()->mahasiswa->id)->first();
-            $f4->mahasiswam_id = Auth::user()->mahasiswa->id;
-            $f4->f41 = $s[1];
-            $f4->f42 = $s[2];
-            $f4->f43 = $s[3];
-            $f4->f44 = $s[4];
-            $f4->f45 = $s[5];
-            $f4->f46 = $s[6];
-            $f4->f47 = $s[7];
-            $f4->f48 = $s[8];
-            $f4->f49 = $s[9];
-            $f4->f410 = $s[10];
-            $f4->f411 = $s[11];
-            $f4->f412 = $s[12];
-            $f4->f413 = $s[13];
-            $f4->f414 = $s[14];
-            $f4->f415 = $s[15];
-            $f4->f416 = $req->f416;
-            $f4->save();
-        } else {
-            $f4 = new F4m();
-            $f4->mahasiswam_id = Auth::user()->mahasiswa->id;
-            $f4->f41 = $s[1];
-            $f4->f42 = $s[2];
-            $f4->f43 = $s[3];
-            $f4->f44 = $s[4];
-            $f4->f45 = $s[5];
-            $f4->f46 = $s[6];
-            $f4->f47 = $s[7];
-            $f4->f48 = $s[8];
-            $f4->f49 = $s[9];
-            $f4->f410 = $s[10];
-            $f4->f411 = $s[11];
-            $f4->f412 = $s[12];
-            $f4->f413 = $s[13];
-            $f4->f414 = $s[14];
-            $f4->f415 = $s[15];
-            $f4->f416 = $req->f416;
-            $f4->save();
-        }
+        $f4 = F4m::updateOrCreate(
+            ['mahasiswam_id' => Auth::user()->mahasiswa->id],
+            [
+                'f41' => $s[1],
+                'f42' => $s[2],
+                'f43' => $s[3],
+                'f44' => $s[4],
+                'f45' => $s[5],
+                'f46' => $s[6],
+                'f47' => $s[7],
+                'f48' => $s[8],
+                'f49' => $s[9],
+                'f410' => $s[10],
+                'f411' => $s[11],
+                'f412' => $s[12],
+                'f413' => $s[13],
+                'f414' => $s[14],
+                'f415' => $s[15],
+                'f416' => $req->f416,
+            ]
+        );
 
         $mahasiswa = Mahasiswam::find(Auth::user()->mahasiswa->id);
         $mahasiswa->status = 5;
@@ -413,15 +409,17 @@ class TracerController extends Controller
         }
 
         //////////////////////////////////
-        $f9 = new F9m();
-        $f9->mahasiswam_id = Auth::user()->mahasiswa->id;
-        $f9->f91 = $s[1];
-        $f9->f92 = $s[2];
-        $f9->f93 = $s[3];
-        $f9->f94 = $s[4];
-        $f9->f95 = $s[5];
-        $f9->f96 = $req->f96;
-        $f9->save();
+        F9m::updateOrCreate(
+            ['mahasiswam_id' => Auth::user()->mahasiswa->id],
+            [
+                'f91' => $s[1],
+                'f92' => $s[2],
+                'f93' => $s[3],
+                'f94' => $s[4],
+                'f95' => $s[5],
+                'f96' => $req->f96,
+            ]
+        );
         /////////////////////////////////
         $mahasiswa = Mahasiswam::find(Auth::user()->mahasiswa->id);
         $mahasiswa->status = 10;
@@ -451,11 +449,13 @@ class TracerController extends Controller
 
 
         //////////////////////////////////
-        $f10 = new F10m();
-        $f10->mahasiswam_id = Auth::user()->mahasiswa->id;
-        $f10->f101 = $req->f101;
-        $f10->f102 = $req->f102;
-        $f10->save();
+        F10m::updateOrCreate(
+            ['mahasiswam_id' => Auth::user()->mahasiswa->id],
+            [
+                'f101' => $req->f101,
+                'f102' => $req->f102,
+            ]
+        );
         /////////////////////////////////
         $mahasiswa = Mahasiswam::find(Auth::user()->mahasiswa->id);
         $mahasiswa->status = 11;
@@ -504,34 +504,41 @@ class TracerController extends Controller
 
 
         //////////////////////////////////
-        $f11 = new F11m();
-        $f11->mahasiswam_id = Auth::user()->mahasiswa->id;
-        $f11->f111 = $req->f111;
-        $f11->f112 = $req->f112;
-        $f11->save();
+        $f11 = F11m::updateOrCreate(
+            ['mahasiswam_id' => Auth::user()->mahasiswa->id],
+            [
+                'f111' => $req->f111,
+                'f112' => $req->f112,
+            ]
+        );
+
         //////////////////////////////////
-        $f12 = new F12m();
-        $f12->mahasiswam_id = Auth::user()->mahasiswa->id;
-        $f12->f121 = $req->f121;
-        $f12->f122 = $req->f122;
-        $f12->save();
+        $f12 = F12m::updateOrCreate(
+            ['mahasiswam_id' => Auth::user()->mahasiswa->id],
+            ['f121' => $req->f121, 'f122' => $req->f122,]
+        );
         //////////////////////////////////
-        $f13 = new F13m();
-        $f13->mahasiswam_id = Auth::user()->mahasiswa->id;
-        $f13->f131 = $req->f131;
-        $f13->f132 = $req->f132;
-        $f13->f133 = $req->f133;
-        $f13->save();
+        $f13 = F13m::updateOrCreate(
+            ['mahasiswam_id' => Auth::user()->mahasiswa->id],
+            [
+                'f131' => $req->f131,
+                'f132' => $req->f132,
+                'f133' => $req->f133,
+            ]
+        );
+
         //////////////////////////////////
-        $f14 = new F14m();
-        $f14->mahasiswam_id = Auth::user()->mahasiswa->id;
-        $f14->f14 = $req->f14;
-        $f14->save();
+        $f14 = F14m::updateOrCreate(
+            ['mahasiswam_id' => Auth::user()->mahasiswa->id],
+            ['f14' => $req->f14,]
+        );
+
         //////////////////////////////////
-        $f15 = new F15m();
-        $f15->mahasiswam_id = Auth::user()->mahasiswa->id;
-        $f15->f15 = $req->f15;
-        $f15->save();
+        $f15 = F15m::updateOrCreate(
+            ['mahasiswam_id' => Auth::user()->mahasiswa->id],
+            ['f15' => $req->f15,]
+        );
+
         /////////////////////////////////
         $mahasiswa = Mahasiswam::find(Auth::user()->mahasiswa->id);
         $mahasiswa->status = 16;
@@ -566,23 +573,26 @@ class TracerController extends Controller
 
 
         //////////////////////////////////
-        $f16 = new F16m();
-        $f16->mahasiswam_id = Auth::user()->mahasiswa->id;
-        $f16->f161 = $s[1];
-        $f16->f162 = $s[2];
-        $f16->f163 = $s[3];
-        $f16->f164 = $s[4];
-        $f16->f165 = $s[5];
-        $f16->f166 = $s[6];
-        $f16->f167 = $s[7];
-        $f16->f168 = $s[8];
-        $f16->f169 = $s[9];
-        $f16->f1610 = $s[10];
-        $f16->f1611 = $s[11];
-        $f16->f1612 = $s[12];
-        $f16->f1613 = $s[13];
-        $f16->f1614 = $req->f1614;
-        $f16->save();
+        $f16 = F16m::updateOrCreate(
+            ['mahasiswam_id' => Auth::user()->mahasiswa->id],
+            [
+                'f161' => $s[1],
+                'f162' => $s[2],
+                'f163' => $s[3],
+                'f164' => $s[4],
+                'f165' => $s[5],
+                'f166' => $s[6],
+                'f167' => $s[7],
+                'f168' => $s[8],
+                'f169' => $s[9],
+                'f1610' => $s[10],
+                'f1611' => $s[11],
+                'f1612' => $s[12],
+                'f1613' => $s[13],
+                'f1614' => $req->f1614
+            ]
+        );
+
         /////////////////////////////////
         $mahasiswa = Mahasiswam::find(Auth::user()->mahasiswa->id);
         $mahasiswa->status = 17;
@@ -607,70 +617,76 @@ class TracerController extends Controller
             return back()->withErrors(['f17' => 'Mohon untuk melengkapi isian']);
         }
         //////////////////////////////////
-        $f17a = new F17am();
-        $f17a->mahasiswam_id = Auth::user()->mahasiswa->id;
-        $f17a->f171    =    $req->f17a1;
-        $f17a->f173    =    $req->f17a2;
-        $f17a->f175    =    $req->f17a3;
-        $f17a->f175a    =    $req->f17a4;
-        $f17a->f177    =    $req->f17a5;
-        $f17a->f179    =    $req->f17a6;
-        $f17a->f1711    =    $req->f17a7;
-        $f17a->f1713    =    $req->f17a8;
-        $f17a->f1715    =    $req->f17a9;
-        $f17a->f1717    =    $req->f17a10;
-        $f17a->f1719    =    $req->f17a11;
-        $f17a->f1721    =    $req->f17a12;
-        $f17a->f1723    =    $req->f17a13;
-        $f17a->f1725    =    $req->f17a14;
-        $f17a->f1727    =    $req->f17a15;
-        $f17a->f1729    =    $req->f17a16;
-        $f17a->f1731    =    $req->f17a17;
-        $f17a->f1733    =    $req->f17a18;
-        $f17a->f1735    =    $req->f17a19;
-        $f17a->f1737    =    $req->f17a20;
-        $f17a->f1737a    =    $req->f17a21;
-        $f17a->f1739    =    $req->f17a22;
-        $f17a->f1741    =    $req->f17a23;
-        $f17a->f1743    =    $req->f17a24;
-        $f17a->f1745    =    $req->f17a25;
-        $f17a->f1747    =    $req->f17a26;
-        $f17a->f1749    =    $req->f17a27;
-        $f17a->f1751    =    $req->f17a28;
-        $f17a->f1753    =    $req->f17a29;
-        $f17a->save();
+        $f17a = F17am::updateOrCreate(
+            ['mahasiswam_id' => Auth::user()->mahasiswa->id],
+            [
+                'f171'    =>    $req->f17a1,
+                'f173'    =>    $req->f17a2,
+                'f175'    =>    $req->f17a3,
+                'f175a'    =>    $req->f17a4,
+                'f177'    =>    $req->f17a5,
+                'f179'    =>    $req->f17a6,
+                'f1711'    =>    $req->f17a7,
+                'f1713'    =>    $req->f17a8,
+                'f1715'    =>    $req->f17a9,
+                'f1717'    =>    $req->f17a10,
+                'f1719'    =>    $req->f17a11,
+                'f1721'    =>    $req->f17a12,
+                'f1723'    =>    $req->f17a13,
+                'f1725'    =>    $req->f17a14,
+                'f1727'    =>    $req->f17a15,
+                'f1729'    =>    $req->f17a16,
+                'f1731'    =>    $req->f17a17,
+                'f1733'    =>    $req->f17a18,
+                'f1735'    =>    $req->f17a19,
+                'f1737'    =>    $req->f17a20,
+                'f1737a'    =>    $req->f17a21,
+                'f1739'    =>    $req->f17a22,
+                'f1741'    =>    $req->f17a23,
+                'f1743'    =>    $req->f17a24,
+                'f1745'    =>    $req->f17a25,
+                'f1747'    =>    $req->f17a26,
+                'f1749'    =>    $req->f17a27,
+                'f1751'    =>    $req->f17a28,
+                'f1753'    =>    $req->f17a29,
+            ]
+        );
+
         /////////////////////////////////
-        $f17b = new F17bm();
-        $f17b->mahasiswam_id = Auth::user()->mahasiswa->id;
-        $f17b->f172b    =    $req->f17b1;
-        $f17b->f174b    =    $req->f17b2;
-        $f17b->f176b    =    $req->f17b3;
-        $f17b->f176ba    =    $req->f17b4;
-        $f17b->f178b    =    $req->f17b5;
-        $f17b->f1710b   =    $req->f17b6;
-        $f17b->f1712b   =    $req->f17b7;
-        $f17b->f1714b   =    $req->f17b8;
-        $f17b->f1716b   =    $req->f17b9;
-        $f17b->f1718b   =    $req->f17b10;
-        $f17b->f1720b   =    $req->f17b11;
-        $f17b->f1722b   =    $req->f17b12;
-        $f17b->f1724b   =    $req->f17b13;
-        $f17b->f1726b   =    $req->f17b14;
-        $f17b->f1728b   =    $req->f17b15;
-        $f17b->f1730b   =    $req->f17b16;
-        $f17b->f1732b   =    $req->f17b17;
-        $f17b->f1734b   =    $req->f17b18;
-        $f17b->f1736b   =    $req->f17b19;
-        $f17b->f1738b   =    $req->f17b20;
-        $f17b->f1738ba    =    $req->f17b21;
-        $f17b->f1740b   =    $req->f17b22;
-        $f17b->f1742b   =    $req->f17b23;
-        $f17b->f1744b   =    $req->f17b24;
-        $f17b->f1746b   =    $req->f17b25;
-        $f17b->f1748b   =    $req->f17b26;
-        $f17b->f1750b   =    $req->f17b27;
-        $f17b->f1752b   =    $req->f17b28;
-        $f17b->f1754b   =    $req->f17b29;
+        $f17b = F17bm::updateOrCreate(
+            ['mahasiswam_id' => Auth::user()->mahasiswa->id],
+            [
+                'f172b'   =>    $req->f17b1,
+                'f174b'   =>    $req->f17b2,
+                'f176b'   =>    $req->f17b3,
+                'f176ba'   =>    $req->f17b4,
+                'f178b'   =>    $req->f17b5,
+                'f1710b'   =>    $req->f17b6,
+                'f1712b'   =>    $req->f17b7,
+                'f1714b'   =>    $req->f17b8,
+                'f1716b'   =>    $req->f17b9,
+                'f1718b'   =>    $req->f17b10,
+                'f1720b'   =>    $req->f17b11,
+                'f1722b'   =>    $req->f17b12,
+                'f1724b'   =>    $req->f17b13,
+                'f1726b'   =>    $req->f17b14,
+                'f1728b'   =>    $req->f17b15,
+                'f1730b'   =>    $req->f17b16,
+                'f1732b'   =>    $req->f17b17,
+                'f1734b'   =>    $req->f17b18,
+                'f1736b'   =>    $req->f17b19,
+                'f1738b'   =>    $req->f17b20,
+                'f1738ba'   =>    $req->f17b21,
+                'f1740b'   =>    $req->f17b22,
+                'f1742b'   =>    $req->f17b23,
+                'f1744b'   =>    $req->f17b24,
+                'f1746b'   =>    $req->f17b25,
+                'f1748b'   =>    $req->f17b26,
+                'f1750b'   =>    $req->f17b27,
+                'f1752b'   =>    $req->f17b28,
+                'f1754b'   =>    $req->f17b29,
+            ]
+        );
         $f17b->save();
         /////////////////////////////////
         $mahasiswa = Mahasiswam::find(Auth::user()->mahasiswa->id);
