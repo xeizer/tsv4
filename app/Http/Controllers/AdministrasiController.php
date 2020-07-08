@@ -254,7 +254,7 @@ class AdministrasiController extends Controller
             'tahunlulus' => 'required|digits:4',
             'semesterlulus' => 'required|between:1,2',
             'ipk' => 'required|numeric|between:1,4.00',
-            'ajax' => 'required|exists:Prodims,id'
+            'ajax' => 'required|exists:prodims,id'
         ], $messages = [
             'nim.required' => 'Nomor Induk Mahasiswa Harus Diisi',
             'nim.integer' => 'Nomor Induk Mahasiswa harus berupa Angka',

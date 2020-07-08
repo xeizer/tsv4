@@ -216,6 +216,7 @@ class TracerController extends Controller
     }
     public function simpanf4(Request $req)
     {
+
         if (count(Input::all()) <= 2) {
             return back()->withErrors(['f4' => 'Mohon untuk memilih salah satu']);
         }
