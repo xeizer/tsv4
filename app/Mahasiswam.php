@@ -8,7 +8,7 @@ class Mahasiswam extends Model
 {
     //
     protected $fillable = [
-        'user_id', 'prodim_id', 'ipk', 'semester_lulus', 'tahun_lulus', 'status', 'durasi_tahun', 'durasi_bulan', 'durasi_hari'
+        'user_id', 'prodim_id', 'ipk', 'angkatan', 'semester_lulus', 'tahun_lulus', 'status', 'durasi_tahun', 'durasi_bulan', 'durasi_hari'
     ];
 
     public function scopeTercepat($query, $angkatan, $pilih, $prodi)
