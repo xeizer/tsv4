@@ -40,7 +40,7 @@ class CetakController extends Controller
                 ]
             ])
         );
-        return $pdf->stream('selesai.pdf');
+        return $pdf->download('selesai.pdf');
         //return view('depan.cetakpdf');
     }
     public function pdfbuktistakeholder()
@@ -70,7 +70,7 @@ class CetakController extends Controller
                 ]
             ])
         );
-        return $pdf->stream('selesai_stakeholder.pdf');
+        return $pdf->download('selesai_stakeholder.pdf');
         //return view('depan.cetakpdf');
     }
     public function pdfbukti2($id)
@@ -102,7 +102,7 @@ class CetakController extends Controller
                 ]
             ])
         );
-        return $pdf->stream('selesai.pdf');
+        return $pdf->download('selesai ' . $data['nama'] . '.pdf');
         //return view('depan.cetakpdf');
     }
     public function pdfbuktistakeholder2($id)
@@ -132,7 +132,7 @@ class CetakController extends Controller
                 ]
             ])
         );
-        return $pdf->stream('selesai_stakeholder.pdf');
+        return $pdf->download('selesai_stakeholder ' . $data['namamahasiswa'] . '.pdf');
         //return view('depan.cetakpdf');
     }
 }
