@@ -12,7 +12,7 @@ data-durasitahun="{{$data->durasi_tahun}}"
 data-durasibulan="{{$data->durasi_bulan}}"
 data-durasihari="{{$data->durasi_hari}}"
 data-ipk="{{$data->ipk}}">
-    <i class="fa fa-edit"></i> Ubah Data
+    <i class="fa fa-edit"></i>
 </button>
 
 <button
@@ -20,7 +20,13 @@ data-ipk="{{$data->ipk}}">
     class="btn btn-danger btn-sm"
     data-id="{{$data->user_id}}"
     data-nama="{{$data->user->name}}">
-    <i class="fa fa-close"></i> Hapus
+    <i class="fa fa-close"></i>
 </button>
+@if($data->status==99)
+<a href="{{route('cetak.tracer2', $data->id)}}" target="_blank" class="btn btn-primary btn-sm">Bukti</a>
+@endif
+@if($data->f8)
+<a href="{{route('cetak.stakeholder2', $data->id)}}" target="_blank" class="btn btn-success btn-sm">SH</a>
+@endif
 
 @endrole

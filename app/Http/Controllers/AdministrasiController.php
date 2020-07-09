@@ -77,6 +77,18 @@ class AdministrasiController extends Controller
             ->addColumn('prodi', function ($data_alumni) {
                 return $data_alumni->prodi->slug_prodi;
             })
+            ->addColumn('kerja', function ($data_alumni) {
+                if ($data_alumni->f8) {
+                    if ($data_alumni->f8->f8 == 1) {
+                        $skerja = 'Ya';
+                    } else {
+                        $skerja = 'Tidak';
+                    }
+                } else {
+                    $skerja = 'Tidak';
+                }
+                return $skerja;
+            })
             ->addColumn('aksi', function ($data_alumni) {
                 return view('administrasi.alumni._aksialumni')->with([
                     'data' => $data_alumni

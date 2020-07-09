@@ -21,6 +21,7 @@
                         <th rowspan="2">IPK</th>
                         <th rowspan="2">Prodi</th>
                         <th rowspan="2">Angkatan</th>
+                        <th rowspan="2">Kerja</th>
                         <th rowspan="2">Tahun Lulus</th>
                         <th colspan="3">Lama Kuliah</th>
                         <th rowspan="2">Aksi</th>
@@ -334,10 +335,12 @@
                 {data: 'ipk', name: 'ipk'},
                 {data: 'prodi', name: 'prodi'},
                 {data: 'angkatan', name: 'angkatan'},
+                {data: 'kerja', name: 'kerja'},
                 {data: 'tahun_semester', name: 'tahun_semester'},
                 {data: 'durasi_tahun', name: 'durasi_tahun'},
                 {data: 'durasi_bulan', name: 'durasi_bulan'},
                 {data: 'durasi_hari', name: 'durasi_hari'},
+
                 {data: 'aksi', name: 'aksi', orderable: false},
                 ]
             } );

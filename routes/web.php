@@ -100,6 +100,8 @@ Route::get('/stakeholder/selesai', 'TracerController@selesaistakeholder')->name(
 Route::post('/stakeholder/simpan', 'TracerController@simpanstakeholder')->name('tracer.stakeholder.simpan')->middleware('role:stakeholder');
 Route::get('/cetak/tracer', 'CetakController@pdfbukti')->middleware('auth')->name('cetak.tracer');
 Route::get('/cetak/stakeholder', 'CetakController@pdfbuktistakeholder')->middleware('auth')->name('cetak.stakeholder');
+Route::get('/cetak/tracer/{id}', 'CetakController@pdfbukti2')->middleware('auth', 'role:odin|rektor|dekan|admin|humas|admin')->name('cetak.tracer2');
+Route::get('/cetak/stakeholder/{id}', 'CetakController@pdfbuktistakeholder2')->middleware('auth', 'role:odin|rektor|dekan|admin|humas|admin')->name('cetak.stakeholder2');
 Route::prefix('/admnistrasi/stakeholder')->middleware('role:odin|admin|rektor|humas|dekan')->group(function () {
     Route::get('/{prodi}/{tahunangkatan}/{tahunlulus}', 'StakeholderController@index')->middleware('role:odin|admin|rektor|humas|dekan')->name('stakeholder.index');
 });

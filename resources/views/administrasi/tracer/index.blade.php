@@ -316,6 +316,7 @@
     </div>
 </div>
 <div class="row">
+    @if($data['kerja']>0)
     <div class="col-md-4">
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -362,7 +363,7 @@
                 </div>
             </div>
             <div class="box-body">
-                @if($data['kerja']>0)
+
                 <table class="table">
                     <tr>
                         <td>Lebih dari 18 Bulan</td>
@@ -380,7 +381,7 @@
                         <td>{{number_format($data['kurang6']/$data['kerja']*100,2)}} %</td>
                     </tr>
                 </table>
-                @endif
+
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
@@ -466,6 +467,7 @@
             <!-- /.box-footer-->
         </div>
     </div>
+    @endif
 </div>
 @push('script')
     <script src="{{asset('adminlte/bower_components/Flot/jquery.flot.js')}}"></script>
