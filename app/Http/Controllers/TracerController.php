@@ -35,25 +35,29 @@ class TracerController extends Controller
     public function resetTracer()
     {
         $mahasiswa_id = Auth::user()->mahasiswa->id;
-        F2m::destroy($mahasiswa_id);
-        F3m::destroy($mahasiswa_id);
-        F4m::destroy($mahasiswa_id);
-        F5m::destroy($mahasiswa_id);
-        F6m::destroy($mahasiswa_id);
-        F7m::destroy($mahasiswa_id);
-        F7am::destroy($mahasiswa_id);
-        F8m::destroy($mahasiswa_id);
-        F8a::destroy($mahasiswa_id);
-        F9m::destroy($mahasiswa_id);
-        F10m::destroy($mahasiswa_id);
-        F11m::destroy($mahasiswa_id);
-        F12m::destroy($mahasiswa_id);
-        F13m::destroy($mahasiswa_id);
-        F14m::destroy($mahasiswa_id);
-        F15m::destroy($mahasiswa_id);
-        F16m::destroy($mahasiswa_id);
-        F17am::destroy($mahasiswa_id);
-        F17bm::destroy($mahasiswa_id);
+        F2m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F3m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F4m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F5m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F6m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F7m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F7am::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F8m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F8a::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F9m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F10m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F11m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F12m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F13m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F14m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F15m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F16m::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F17am::where('mahasiswam_id', $mahasiswa_id)->delete();
+        F17bm::where('mahasiswam_id', $mahasiswa_id)->delete();
+        $hapussh = Stakeholderm::where('mahasiswam_id', $mahasiswa_id)->first;
+        $usersh = $hapussh->user_id;
+        $hapussh->delete();
+        User::where('id', $usersh)->delete();
         Mahasiswam::find($mahasiswa_id)->update(['status' => 2]);
         return view('depan.tracer.f2')->with([
             'aktif' => 'tracer',
