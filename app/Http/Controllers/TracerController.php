@@ -696,6 +696,7 @@ class TracerController extends Controller
             $next = Auth::user()->mahasiswa->status;
             return redirect()->route('tracer.f' . $next);
         } else {
+
             if (Auth::user()->mahasiswa->f8->f8 == 1) {
                 $user = User::updateOrCreate(
                     ['nim' => 'SH' . Auth::user()->nim, 'name' => 'Stakeholder'],
