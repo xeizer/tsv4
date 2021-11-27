@@ -10,6 +10,12 @@
                 <a class="nav-link @isset($aktif) @if($aktif=='beranda') bg-success @endif @endisset" href="{{route('beranda')}}">Beranda</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="{{url('statistik/publik/1/0/0')}}">Laporan Tracer</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url('sh/publik/1/0/0')}}">Laporan Stakeholder</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link @isset($aktif) @if($aktif=='Informasi') bg-success @endif @endisset" href="{{route('bil', 'Informasi')}}">Informasi</a>
               </li>
               <li class="nav-item">

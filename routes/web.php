@@ -102,16 +102,29 @@ Route::get('/cetak/tracer', 'CetakController@pdfbukti')->middleware('auth')->nam
 Route::get('/cetak/stakeholder', 'CetakController@pdfbuktistakeholder')->middleware('auth')->name('cetak.stakeholder');
 Route::get('/cetak/tracer/{id}', 'CetakController@pdfbukti2')->middleware('auth', 'role:odin|rektor|dekan|admin|humas|admin')->name('cetak.tracer2');
 Route::get('/cetak/stakeholder/{id}', 'CetakController@pdfbuktistakeholder2')->middleware('auth', 'role:odin|rektor|dekan|admin|humas|admin')->name('cetak.stakeholder2');
+
 Route::prefix('/admnistrasi/stakeholder')->middleware('role:odin|admin|rektor|humas|dekan')->group(function () {
     Route::get('/{prodi}/{tahunangkatan}/{tahunlulus}', 'StakeholderController@index')->middleware('role:odin|admin|rektor|humas|dekan')->name('stakeholder.index');
+    Route::post('/', 'StakeholderController@indexpublikninumum')->middleware('role:odin|admin|rektor|humas|dekan')->name('stakeholder.indexnonumum');
 });
 ///////////////////////
-Route::prefix('/admnistrasi/statistik')->middleware('role:odin|admin|rektor|humas|dekan')->group(function () {
+Route::prefix('/admnistrasi/statistik')->group(function () {
     Route::get('/{prodi}/{tahunangkatan}/{tahunlulus}', 'StatistikController@rekaptracer')->name('statistik.tracer');
     Route::post('/rs', 'StatistikController@rekaptracer2')->name('statistik.tracer2');
     Route::get('/{prodi_id}', 'StatistikController@index')->name('statistik.index');
 });
-
+Route::get('statistik/publik/{prodi}/{tahunangkatan}/{tahunlulus}', 'StatistikController@rekaptracerpublik')->name('statistik.tracerpublik');
+Route::get('sh/publik/{prodi}/{tahunangkatan}/{tahunlulus}', 'StakeholderController@indexpublik')->name('stakeholder.indexpublik');
+Route::post('sh/publik/', 'StakeholderController@indexpublik2')->name('stakeholder.indexpublik2');
+Route::post('/rs/publik', 'StatistikController@rekaptracer2publik')->name('statistik.tracer2publik');
 Route::get('/sh', function () {
     return view('administrasi.stakeholder.index');
 });
+
+Route::get('/pekerjaan/{prodi}/{tahunangkatan}/{tahunlulus}', 'StakeholderController@bekerja')
+    ->middleware('auth', 'role:odin|rektor|dekan|admin|humas|admin')->name('pekerjaan.index');
+Route::get('/pekerjaan', 'StakeholderController@bekerja2')
+    ->middleware('auth', 'role:odin|rektor|dekan|admin|humas|admin');
+
+Route::get('/api/pekerjaan/{prodi}', 'StakeholderController@apibekerja')
+    ->middleware('auth', 'role:odin|rektor|dekan|admin|humas|admin')->name('pekerjaan.api');

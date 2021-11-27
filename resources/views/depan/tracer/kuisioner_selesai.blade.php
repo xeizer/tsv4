@@ -6,14 +6,12 @@
 		<div class="jumbotron">
 		    <h1>Terima Kasih Telah Mengisi Kuisioner </h1>
             <p>Alumni <strong>{{Auth::user()->name}}</strong>, Anda Telah menyelesaikan Proses Pengisian Kuisioner pada {{Carbon\Carbon::parse(Auth::user()->mahasiswa->updated_at)->format('d - M - Y')}}.</p>
-            <p>Anda akan mengisi Tracer lagi Pada : {{Carbon\Carbon::parse(Auth::user()->mahasiswa->updated_at)->addYear(2)->format('d-M-Y')}} ({{
-            Carbon\Carbon::parse(Auth::user()->mahasiswa->updated_at)->addYear(2)->diffInDays(Carbon\Carbon::now())
-            }} Hari lagi)</p>
-            @if(Carbon\Carbon::parse(Auth::user()->mahasiswa->updated_at)->addYear(2)->diffInDays(Carbon\Carbon::now())<=0)
-            <a href="{{url('/tracer/reset')}}">Isi Ulang Tracer Studi</a>
-            @else
+            {{-- UNTUK Menambah durasi tunggu Pengisian--}}
+            {{-- @if(Carbon\Carbon::parse(Auth::user()->mahasiswa->updated_at)->addYear(2)->diffInDays(Carbon\Carbon::now())<=0) --}}
+            <a href="{{url('/tracer/reset')}}">Isi Ulang Tracer Studi</a><br />>
+            {{-- @else --}}
             <p>Cetak Bukti <a href="{{route('cetak.tracer')}}" class="btn btn-info" target="new">DOWNLOAD</a></p>
-            @endif
+            {{-- @endif --}}
         </div>
         @if(Auth::user()->mahasiswa->f8->f8==1)
         <div class="jumbotron">

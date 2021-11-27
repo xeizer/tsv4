@@ -67,6 +67,26 @@
         @endforeach
     </ul>
 </li>
+<li class="treeview @isset ($active) @if($active==5)active @endif @endisset">
+    <a href="#">
+        <i class="fa fa-files-o"></i>
+        <span>Pekerjaan</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        @foreach (App\Prodim::all() as $p)
+        <li class="@isset ($subactive) @if($subactive==" 5$p->id")active @endif @endisset">
+            <a href="{{route('pekerjaan.index',['prodi_id'=>$p->id, 'tahunangkatan' => 0, 'tahunlulus' =>0])}}"><i
+                    class="fa @isset ($subactive) @if($subactive==" 5$p->id")fa-circle @else fa-circle-o @endif
+                    @endisset"></i>
+                {{$p->slug_prodi}}
+            </a>
+        </li>
+        @endforeach
+    </ul>
+</li>
 <li class="header">LAPORAN</li>
 
 <li class="treeview @isset ($active) @if($active==6)active @endif @endisset">
