@@ -365,16 +365,7 @@ class TracerController extends Controller
             ['f8' => $req->f8]
         );
         if ($req->f8 == 1) {
-            $user = User::updateOrCreate(
-                ['nim' => 'SH' . Auth::user()->nim, 'name' => 'Stakeholder'],
-                ['password' => bcrypt('1234')]
-            );
-            $user->detachRole('stakeholder');
-            $user->attachRole('stakeholder');
-            $stake = Stakeholderm::updateOrCreate(
-                ['user_id' => User::where('nim', 'SH' . Auth::user()->nim)->first()->id],
-                ['mahasiswam_id' => Auth::user()->mahasiswa->id]
-            );
+
             //dd($req);
             $f8a = F8a::updateOrCreate(
                 ['mahasiswam_id' => Auth::user()->mahasiswa->id],
@@ -705,6 +696,18 @@ class TracerController extends Controller
             $next = Auth::user()->mahasiswa->status;
             return redirect()->route('tracer.f' . $next);
         } else {
+            if (Auth::user()->mahasiswa->f8->f8 == 1) {
+                $user = User::updateOrCreate(
+                    ['nim' => 'SH' . Auth::user()->nim, 'name' => 'Stakeholder'],
+                    ['password' => bcrypt('1234')]
+                );
+                $user->detachRole('stakeholder');
+                $user->attachRole('stakeholder');
+                $stake = Stakeholderm::updateOrCreate(
+                    ['user_id' => User::where('nim', 'SH' . Auth::user()->nim)->first()->id],
+                    ['mahasiswam_id' => Auth::user()->mahasiswa->id]
+                );
+            }
             return view('depan.tracer.kuisioner_selesai')->with([
                 'aktif' => 'tracer',
             ]);
